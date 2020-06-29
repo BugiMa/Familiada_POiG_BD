@@ -1,9 +1,4 @@
 ﻿using Familiada.ViewModel.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Familiada.ViewModel
 {
@@ -12,5 +7,23 @@ namespace Familiada.ViewModel
         private string question;
         private string answer;
         private int timer;
+
+        public string Question
+        {
+            get => question;
+            set { question = value; OnPropertyChanged(); }
+        }
+
+        public string Answer
+        {
+            get => answer;
+            set { answer = value; OnPropertyChanged(); }
+        }
+
+        public int Timer
+        {
+            get => timer;
+            set { timer = value; OnPropertyChanged(); }
+        }
     }
 }

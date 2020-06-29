@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
+﻿using Familiada.ViewModel.Base;
 
 namespace Familiada.ViewModel
 {
-    class StrasburgerViewModel
+    class StrasburgerViewModel: ViewModelBase
     {
         private string saying;
         //private Image strasburger;
+
+        public string Saying
+        {
+            get => saying;
+            set { saying = value; OnPropertyChanged(); }
+        }
     }
 }
