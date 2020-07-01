@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Familiada.View"
+             xmlns:local="clr-namespace:Familiada.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="550">
     <Grid>
@@ -22,11 +22,11 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
 
-            <ListBox Grid.Row="0" Grid.Column="0"/>
+            <ListBox ItemsSource="{Binding RightAnswers, Mode=OneWay}" Grid.Row="0" Grid.Column="0"/>
             <ListBox Grid.Row="0" Grid.Column="1"/>
             
-            <TextBlock Grid.Row="1" Grid.Column="0"/>
-            <TextBlock Grid.Row="1" Grid.Column="1"/>
+            <TextBlock Text="Total" Grid.Row="1" Grid.Column="0"/>
+            <TextBlock Text="{Binding Points, Mode=OneWay}" Grid.Row="1" Grid.Column="1"/>
 
 
 
