@@ -3,10 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Familiada.View"      
+        xmlns:local="clr-namespace:Familiada.View"    
+        xmlns:viewModel="clr-namespace:Familiada.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="640" Width="960">
-
+    <Window.DataContext>
+        <viewModel:MainWindowViewModel />
+    </Window.DataContext>
+    
     <Grid Margin="20">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -17,8 +21,8 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         
-        <local:Strasburger Grid.Column="0" Grid.Row="0"/>
-        <local:Board Grid.Column="1" Grid.Row="0"/>
-        <local:QuestionSection Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <local:Strasburger DataContext="{Binding Strasburger}" Grid.Column="0" Grid.Row="0"/>
+        <local:Board DataContext="{Binding Board}" Grid.Column="1" Grid.Row="0"/>
+        <local:QuestionSection DataContext="{Binding QuestionSection}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>
