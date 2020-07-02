@@ -51,6 +51,7 @@
     <Reference Include="K4os.Hash.xxHash, Version=1.0.6.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
       <HintPath>..\packages\K4os.Hash.xxHash.1.0.6\lib\net46\K4os.Hash.xxHash.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="MySql.Data, Version=8.0.20.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.20\lib\net452\MySql.Data.dll</HintPath>
     </Reference>
@@ -80,6 +81,7 @@
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.6.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -110,8 +112,12 @@
     <Compile Include="ViewModel\Base\ViewModelBase.cs" />
     <Compile Include="ViewModel\BoardViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\MenuViewModel.cs" />
     <Compile Include="ViewModel\QuestionSectionViewModel.cs" />
     <Compile Include="ViewModel\StrasburgerViewModel.cs" />
+    <Compile Include="View\UserControls\Menu.xaml.cs">
+      <DependentUpon>Menu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControls\Strasburger.xaml.cs">
       <DependentUpon>Strasburger.xaml</DependentUpon>
     </Compile>
@@ -133,6 +139,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\UserControls\Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\UserControls\Strasburger.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
