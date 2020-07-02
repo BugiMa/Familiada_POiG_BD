@@ -22,6 +22,7 @@ namespace Familiada.Model.DAL
             connStrBuilder.UserID = ;    //przenieść stringi do zasobów aplikacji
             connStrBuilder.Password = ;
             connStrBuilder.Server = ;
+
             connStrBuilder.Database = ;
             connStrBuilder.Port = ;
             */

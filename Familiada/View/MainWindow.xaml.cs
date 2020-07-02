@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Media;
 
 namespace Familiada
 {
@@ -23,6 +24,10 @@ namespace Familiada
         public MainWindow()
         {
             InitializeComponent();
+
+            SoundPlayer simpleSound = new SoundPlayer(@"..\..\Familjadee.wav");
+            simpleSound.Play();
+
         }
     }
 }
