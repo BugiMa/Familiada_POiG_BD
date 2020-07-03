@@ -6,13 +6,13 @@
              xmlns:local="clr-namespace:Familiada.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="250">
-    <Grid>
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="{Binding Saying, Mode=OneWay}" Grid.Row="0"/>   <!--Wypowiedzi Strasburgera--> 
+        <TextBlock Text="{Binding Saying, Mode=OneWay}" TextWrapping="Wrap" Grid.Row="0"/>   <!--Wypowiedzi Strasburgera--> 
         
         <Image Grid.Row="1"/>       <!--Animowany Strasburger-->
 

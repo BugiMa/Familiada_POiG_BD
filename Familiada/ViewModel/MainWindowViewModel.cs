@@ -19,7 +19,16 @@ namespace Familiada.ViewModel
         public QuestionSectionViewModel QuestionSection { get; set; }
         public StrasburgerViewModel Strasburger { get; set; }
         public SoundPlayer Music { get; set; }
-        //public string TeamName { get; set; }
+        private bool musicOn;
+        public bool MusicOn
+        {
+            get => musicOn;
+            set
+            {
+                musicOn = value;
+                this.OnPropertyChanged();
+            }
+        }
 
         private ICommand checkAnswer;
         public ICommand CheckAnswer
@@ -40,9 +49,38 @@ namespace Familiada.ViewModel
             }
         }
 
+        private ICommand musicOnOff;
+        public ICommand MusicOnOff
+        {
+            get
+            {
+                if (musicOnOff == null)
+                {
+                    musicOnOff = new RelayCommand(
+                        arg =>
+                        {
+                            if (MusicOn == true)
+                            {
+                                Music.Stop();
+                                MusicOn = false;
+                            }
+                            else
+                            {
+                                Music.PlayLooping();
+                                MusicOn = true;
+                            }
+                        },
+                        arg => true
+                        );
+                }
+                return musicOnOff;
+            }
+        }
+
         public MainWindowViewModel()
         {
             Music = new SoundPlayer(@"..\..\Familjadee.wav");
+            MusicOn = true;
 
             Menu = new MenuViewModel();
             Board = new BoardViewModel();
@@ -50,7 +88,6 @@ namespace Familiada.ViewModel
             QuestionSection = new QuestionSectionViewModel();
 
             Music.PlayLooping();
-
         }
 
         
