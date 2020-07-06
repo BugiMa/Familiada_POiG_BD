@@ -4,17 +4,26 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Familiada.ViewModel"
+             xmlns:gif="http://wpfanimatedgif.codeplex.com"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="250">
-    <Grid >
+
+    <UserControl.Resources>
+        <BitmapImage x:Key="StrasburgerText" UriSource="/GameResources/StrasburgerText.png"/>
+    </UserControl.Resources>
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="{Binding Saying, Mode=OneWay}" TextWrapping="Wrap" Grid.Row="0"/>   <!--Wypowiedzi Strasburgera--> 
-        
-        <Image Grid.Row="1"/>       <!--Animowany Strasburger-->
+        <TextBlock Text="{Binding Saying, Mode=OneWay}" TextWrapping="Wrap" Grid.Row="0">
+            <TextBlock.Background>
+                <ImageBrush ImageSource="{StaticResource StrasburgerText}"/>
+            </TextBlock.Background>
+        </TextBlock>   <!--Wypowiedzi Strasburgera-->
+
+        <Image gif:ImageBehavior.AnimatedSource="/GameResources/STRASBURGER_WOW.gif" Stretch="Fill" Grid.Row="1"/>       <!--Animowany Strasburger-->
 
     </Grid>
 </UserControl>

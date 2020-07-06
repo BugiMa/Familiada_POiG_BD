@@ -6,6 +6,10 @@
              xmlns:local="clr-namespace:Familiada.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="550">
+    <UserControl.Resources>
+        <BitmapImage x:Key="Board" UriSource="/GameResources/Board.png"/>
+    </UserControl.Resources>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="6*"/>
@@ -21,12 +25,13 @@
                 <RowDefinition Height="4*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
+            <Image Source ="{StaticResource Board}" Stretch="Fill" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
 
-            <ListBox ItemsSource="{Binding RightAnswers, Mode=OneWay}" Grid.Row="0" Grid.Column="0"/>
-            <ListBox Grid.Row="0" Grid.Column="1"/>
+            <ListBox Background="Transparent" ItemsSource="{Binding RightAnswers, Mode=OneWay}" Grid.Row="0" Grid.Column="0"/>
+            <ListBox Background="Transparent" Grid.Row="0" Grid.Column="1"/>
             
-            <TextBlock Text="Total" Grid.Row="1" Grid.Column="0"/>
-            <TextBlock Text="{Binding Points, Mode=OneWay}" Grid.Row="1" Grid.Column="1"/>
+            <TextBlock Background="Transparent" Text="Total" Grid.Row="1" Grid.Column="0"/>
+            <TextBlock Background="Transparent" Text="{Binding Points, Mode=OneWay}" Grid.Row="1" Grid.Column="1"/>
 
 
 

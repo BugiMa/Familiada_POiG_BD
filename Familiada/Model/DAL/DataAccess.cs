@@ -22,9 +22,11 @@ namespace Familiada.Model.DAL
             
             connStrBuilder.UserID = "smutnyuzytkowni3";    //przenieść stringi do zasobów aplikacji
             connStrBuilder.Password = "smutnehaslo3";
-            connStrBuilder.Server = "db4free.net";
+            connStrBuilder.Server = "https://www.phpmyadmin.net/";
             connStrBuilder.Database = "familiadaprojekt";
             connStrBuilder.Port = 3306;
+
+     
             
         }
 
