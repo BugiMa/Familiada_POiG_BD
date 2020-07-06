@@ -1,18 +1,13 @@
 ﻿using Familiada.ViewModel.Base;
+using Familiada.Model;
 
 namespace Familiada.ViewModel
 {
     class QuestionSectionViewModel: ViewModelBase
     {
-        private string question;
         private string answer;
         private int timer;
-
-        public string Question
-        {
-            get => question;
-            set { question = value; OnPropertyChanged(); }
-        }
+        private Question currentQuestion;
 
         public string Answer
         {
@@ -25,5 +20,12 @@ namespace Familiada.ViewModel
             get => timer;
             set { timer = value; OnPropertyChanged(); }
         }
+        public Question CurrentQuestion
+        {
+            get => currentQuestion;
+            set { currentQuestion = value; OnPropertyChanged(); }
+        }
+
+
     }
 }

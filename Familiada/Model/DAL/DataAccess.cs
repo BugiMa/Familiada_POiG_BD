@@ -7,28 +7,28 @@ using MySql.Data.MySqlClient;
 
 namespace Familiada.Model.DAL
 {
-    class DataAccess
+    static class DataAccess
     {
-        MySqlConnectionStringBuilder connStrBuilder;
-        MySqlConnection connection;
+        static MySqlConnectionStringBuilder connStrBuilder;
+        static MySqlConnection connection;
 
-        private static string ALL_QUESTIONS_QUERY = "SELECT * FROM questions";
-        private static string ALL_JOKES_QUERY = "SELECT * FROM jokes";
+        private static string ALL_QUESTIONS_QUERY = "SELECT * FROM pytania";
+        private static string ALL_ANSWERS_QUERY = "SELECT * FROM odpowiedzi";
+        private static string ALL_JOKES_QUERY = "SELECT * FROM suchary";
 
-        public DataAccess()
+        static DataAccess()
         {
             connStrBuilder = new MySqlConnectionStringBuilder();
-            /*
-            connStrBuilder.UserID = ;    //przenieść stringi do zasobów aplikacji
-            connStrBuilder.Password = ;
-            connStrBuilder.Server = ;
-
-            connStrBuilder.Database = ;
-            connStrBuilder.Port = ;
-            */
+            
+            connStrBuilder.UserID = "smutnyuzytkowni3";    //przenieść stringi do zasobów aplikacji
+            connStrBuilder.Password = "smutnehaslo3";
+            connStrBuilder.Server = "db4free.net";
+            connStrBuilder.Database = "familiadaprojekt";
+            connStrBuilder.Port = 3306;
+            
         }
 
-        public List<Question> GetAllQuestions()
+        public static List<Question> GetAllQuestions()
         {
             List<Question> questions = new List<Question>();
             string[] answers;
@@ -60,7 +60,7 @@ namespace Familiada.Model.DAL
             return questions;
         }
 
-        public List<string> GetAllJokes()
+        public static List<string> GetAllJokes()
         {
             List<string> jokes = new List<string>();
 
@@ -73,7 +73,7 @@ namespace Familiada.Model.DAL
                 {
                     while (dataReader.Read())
                     {
-                        jokes.Add(dataReader["joke"].ToString());
+                        jokes.Add(dataReader["suchar"].ToString());
                     }
                 }
                 else

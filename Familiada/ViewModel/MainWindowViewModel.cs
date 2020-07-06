@@ -12,12 +12,16 @@ namespace Familiada.ViewModel
 {
     using Base;
     using Model;
+    using Model.DAL;
     class MainWindowViewModel: ViewModelBase
     {
         public MenuViewModel Menu { get; set; }
         public BoardViewModel Board { get; set; }
         public QuestionSectionViewModel QuestionSection { get; set; }
         public StrasburgerViewModel Strasburger { get; set; }
+        private Question[] questions;
+        
+
         public SoundPlayer Music { get; set; }
         private bool musicOn;
         public bool MusicOn
@@ -29,6 +33,7 @@ namespace Familiada.ViewModel
                 this.OnPropertyChanged();
             }
         }
+      
 
         private ICommand checkAnswer;
         public ICommand CheckAnswer
@@ -40,7 +45,7 @@ namespace Familiada.ViewModel
                     checkAnswer = new RelayCommand(
                         arg =>
                         {
-
+                            
                         },
                         arg => true
                         );
@@ -86,6 +91,8 @@ namespace Familiada.ViewModel
             Board = new BoardViewModel();
             Strasburger = new StrasburgerViewModel();
             QuestionSection = new QuestionSectionViewModel();
+
+            //questions = DataAccess.GetAllQuestions().ToArray();
 
             Music.PlayLooping();
         }
