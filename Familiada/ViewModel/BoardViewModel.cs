@@ -1,4 +1,5 @@
 ﻿using Familiada.ViewModel.Base;
+using Familiada.Model.DAL;
 using System.Collections.Generic;
 
 namespace Familiada.ViewModel
@@ -24,6 +25,11 @@ namespace Familiada.ViewModel
             get => total;
             set { total = value; OnPropertyChanged(); }
         }
+
+       /* public List<string> GetRightAnswers(Question currentQuestion)
+        {
+            
+        }*/
 
         public BoardViewModel()
         {

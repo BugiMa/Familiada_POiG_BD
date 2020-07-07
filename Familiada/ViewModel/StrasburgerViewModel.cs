@@ -5,7 +5,7 @@ namespace Familiada.ViewModel
 {
     class StrasburgerViewModel: ViewModelBase
     {
-        private string[] whatStrasburgerSays;
+        private string[] whatStrasburgerHasToSay;
         private string saying;
         //private Image strasburger;
         public string Saying
@@ -20,7 +20,16 @@ namespace Familiada.ViewModel
 
         public StrasburgerViewModel()
         {
-            //whatStrasburgerSays = DataAccess.GetAllJokes().ToArray();
+            Saying = "Witaj w Familiadzie! Wpisz nazwę swojej drużyny.";
+            whatStrasburgerHasToSay = DataAccess.GetAllJokes().ToArray();
+        }
+
+        public void GetRandomJoke()
+        {
+            System.Random rand = new System.Random();
+            int randint = rand.Next(0,whatStrasburgerHasToSay.Length-1);
+
+            Saying = whatStrasburgerHasToSay[randint];
         }
     }
 }

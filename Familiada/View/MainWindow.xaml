@@ -7,29 +7,34 @@
         xmlns:viewModel="clr-namespace:Familiada.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="640" Width="960">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFFFAEE2" Offset="0"/>
+            <GradientStop Color="#FF570037" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Window.DataContext>
         <viewModel:MainWindowViewModel />
     </Window.DataContext>
 
-    
-    <Grid Margin="20">
+    <Grid Margin="20,0,20,20">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        
-        
-        <local:Menu DataContext="{Binding Menu}" Visibility="{Binding Visible}" Background="White" Grid.Column="1" />
 
-        <local:Strasburger DataContext="{Binding Strasburger}" Grid.Column="0" Grid.Row="0"/>
-        <local:Board DataContext="{Binding Board}" Grid.Column="1" Grid.Row="0"/>
-        <local:QuestionSection DataContext="{Binding QuestionSection}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"/>
 
-        <Menu>
+        <local:Menu             DataContext="{Binding Menu}"            Grid.Column="1" Grid.Row="1"  Visibility="{Binding Visible}" Background="White"/>
+        <local:Strasburger      DataContext="{Binding Strasburger}"     Grid.Column="0" Grid.Row="1"/>
+        <local:Board            DataContext="{Binding Board}"           Grid.Column="1" Grid.Row="1"/>
+        <local:QuestionSection  DataContext="{Binding QuestionSection}" Grid.Column="0" Grid.Row="2"  Grid.ColumnSpan="2"/>
+
+        <Menu Grid.Row="0" Background="{x:Null}">
             <MenuItem Header="Muzyka">
                 <MenuItem Header="Włączona" IsChecked="{Binding MusicOn}" Command="{Binding MusicOnOff}"/>
             </MenuItem>
@@ -39,5 +44,6 @@
                 <MenuItem Header="Instrukcja"/>
             </MenuItem>
         </Menu>
+
     </Grid>
 </Window>

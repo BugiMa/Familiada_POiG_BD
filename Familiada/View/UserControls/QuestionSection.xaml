@@ -37,12 +37,12 @@
 
         <TextBox Text="{Binding Answer, Mode=TwoWay}" Grid.Row="1" Grid.Column="0" >
             <TextBox.Background>
-                <ImageBrush ImageSource="{StaticResource AnswerBox}"/>
+                <ImageBrush ImageSource="{StaticResource AnswerBox}" Stretch="Fill"/>
             </TextBox.Background>
         </TextBox>
         <Button Name="checkButton" Grid.Row="1" Grid.Column="1" >
             <Button.Background>
-                <ImageBrush ImageSource="{StaticResource CheckButton}"/>
+                <ImageBrush ImageSource="{StaticResource CheckButton}" Stretch="Fill"/>
             </Button.Background>
         </Button>
 

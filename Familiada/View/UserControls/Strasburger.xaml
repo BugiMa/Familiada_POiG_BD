@@ -17,13 +17,14 @@
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="{Binding Saying, Mode=OneWay}" TextWrapping="Wrap" Grid.Row="0">
+        <TextBlock Text="{Binding Saying, Mode=OneWay}" Padding="20" TextAlignment="Center" FontSize="20" TextTrimming="WordEllipsis" TextWrapping="Wrap" Grid.Row="0">
             <TextBlock.Background>
                 <ImageBrush ImageSource="{StaticResource StrasburgerText}"/>
             </TextBlock.Background>
         </TextBlock>   <!--Wypowiedzi Strasburgera-->
 
-        <Image gif:ImageBehavior.AnimatedSource="/GameResources/STRASBURGER_WOW.gif" Stretch="Fill" Grid.Row="1"/>       <!--Animowany Strasburger-->
+        <Image gif:ImageBehavior.AnimatedSource="/GameResources/STRASBURGER_Talking.gif" Stretch="Fill" 
+               gif:ImageBehavior.RepeatBehavior="6x" Grid.Row="1"/>       <!--Animowany Strasburger-->
 
     </Grid>
 </UserControl>

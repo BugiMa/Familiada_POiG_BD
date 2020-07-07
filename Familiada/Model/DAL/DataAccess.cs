@@ -20,21 +20,21 @@ namespace Familiada.Model.DAL
         {
             connStrBuilder = new MySqlConnectionStringBuilder();
             
-            connStrBuilder.UserID = "smutnyuzytkowni3";    //przenieść stringi do zasobów aplikacji
-            connStrBuilder.Password = "smutnehaslo3";
-            connStrBuilder.Server = "https://www.phpmyadmin.net/";
+            connStrBuilder.UserID = "root";    //przenieść stringi do zasobów aplikacji
+            connStrBuilder.Password = "password";
+            connStrBuilder.Server = "localhost";
             connStrBuilder.Database = "familiadaprojekt";
-            connStrBuilder.Port = 3306;
-
-     
-            
+            connStrBuilder.Port = 3306;          
+           
         }
 
         public static List<Question> GetAllQuestions()
         {
-            List<Question> questions = new List<Question>();
-            string[] answers;
-            int[] points;
+            List<Question> Questions = new List<Question>();
+            List<string> answers = new List<string>();
+            List<int> points = new List<int>();
+            List<string> questions = new List<string>();
+            int questionID=0;
             Question newq;
             
             using(connection = new MySqlConnection(connStrBuilder.ToString()))
@@ -46,20 +46,33 @@ namespace Familiada.Model.DAL
                 {
                     while (dataReader.Read())
                     {
-                        answers = new string[] { dataReader["answer1"].ToString(), dataReader["answer2"].ToString(), dataReader["answer3"].ToString(), dataReader["answer4"].ToString(), dataReader["answer5"].ToString(), dataReader["answer6"].ToString() };
-                        points = new int[] { (int)dataReader["points1"], (int)dataReader["points2"], (int)dataReader["points3"], (int)dataReader["points4"], (int)dataReader["points5"], (int)dataReader["points6"] };
-                        newq = new Question(dataReader["question"].ToString(), answers, points);
-                        questions.Add(newq);
+                        questions[questionID] = dataReader["pytanie"].ToString();
+                        questionID = (int)dataReader["id_pytania"];
+                        questionID++;
                     }
                 }
                 else
                 {
                     Console.WriteLine("Brak wyników zapytania");
                 }
-                connection.Close(); 
+                connection.Close();
+                MySqlCommand command2 = new MySqlCommand(ALL_ANSWERS_QUERY, connection);
+                connection.Open();
+                dataReader = command2.ExecuteReader();
+                if (dataReader.HasRows)
+                {
+                    while (dataReader.Read())
+                    {
+                        answers[questionID] = dataReader["odpowiedz"].ToString();
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Brak wyników zapytania");
+                }
             }
 
-            return questions;
+            return Questions;
         }
 
         public static List<string> GetAllJokes()
