@@ -40,7 +40,7 @@
                 <ImageBrush ImageSource="{StaticResource AnswerBox}" Stretch="Fill"/>
             </TextBox.Background>
         </TextBox>
-        <Button Name="checkButton" Grid.Row="1" Grid.Column="1" >
+        <Button Name="checkButton" Content="Sprawdź!" Command="{Binding CheckAnswer}" Grid.Row="1" Grid.Column="1" >
             <Button.Background>
                 <ImageBrush ImageSource="{StaticResource CheckButton}" Stretch="Fill"/>
             </Button.Background>

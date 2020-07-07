@@ -30,8 +30,8 @@
             <ListBox Background="Transparent" ItemsSource="{Binding RightAnswers, Mode=OneWay}" Padding="10" FontSize="24" Grid.Row="0" Grid.Column="0"/>
             <ListBox Background="Transparent" ItemsSource="{Binding Points, Mode=OneWay}" Padding="10" FontSize="24" Grid.Row="0" Grid.Column="1"/>
             
-            <TextBlock Background="Transparent" Text="Total" Grid.Row="1" Grid.Column="0"/>
-            <TextBlock Background="Transparent" Text="{Binding Total}" Grid.Row="1" Grid.Column="1"/>
+            <TextBlock Background="Transparent" Text="Total" FontSize="24" Padding="15" Grid.Row="1" Grid.Column="0"/>
+            <TextBlock Background="Transparent" Text="{Binding Total}" FontSize="24" Padding="15" TextAlignment="Center" Grid.Row="1" Grid.Column="1"/>
 
 
 

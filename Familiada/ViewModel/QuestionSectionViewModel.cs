@@ -5,7 +5,7 @@ namespace Familiada.ViewModel
 {
     class QuestionSectionViewModel: ViewModelBase
     {
-        private string answer;
+        private string answer="";
         private int timer;
         private Question question;
         private string questionContent;

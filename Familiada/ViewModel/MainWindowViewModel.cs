@@ -33,7 +33,7 @@ namespace Familiada.ViewModel
                 this.OnPropertyChanged();
             }
         }
-      
+
 
         private ICommand checkAnswer;
         public ICommand CheckAnswer
@@ -45,7 +45,14 @@ namespace Familiada.ViewModel
                     checkAnswer = new RelayCommand(
                         arg =>
                         {
-                            
+                            foreach (var rightAnswer in Board.RightAnswers)
+                            {
+                                if (rightAnswer.Contains(QuestionSection.Answer))
+                                {
+                                    Board.RightAnswers.Add("DZIALA");
+                                    QuestionSection.Answer = "";
+                                }                               
+                            }
                         },
                         arg => true
                         );
@@ -95,9 +102,13 @@ namespace Familiada.ViewModel
             questions = DataAccess.GetAllQuestions().ToArray();
 
             Music.PlayLooping();
-
             QuestionSection.GetRandomQuestion(questions);
             Board.GetRightAnswers(QuestionSection.Question);
+        }
+
+        public void GameLoop()
+        {
+             
         }
 
         
