@@ -7,14 +7,20 @@ namespace Familiada.ViewModel
     class BoardViewModel: ViewModelBase
     {
         private List<string> rightAnswers;
+        //private List<string> displayedAnswers;
         private List<string> points;
         private int total;
 
         public List<string> RightAnswers
         {
             get => rightAnswers;
-            set { rightAnswers = value; OnPropertyChanged(); }
+            set { rightAnswers = value; this.OnPropertyChanged(); }
         }
+       /* public List<string> DisplayedAnswers
+        {
+            get => displayedAnswers;
+            set { displayedAnswers = value; this.OnPropertyChanged(); }
+        }*/
         public List<string> Points
         {
             get => points;

@@ -1,11 +1,12 @@
 ﻿using Familiada.ViewModel.Base;
 using Familiada.Model;
+using System.Windows.Input;
 
 namespace Familiada.ViewModel
 {
     class QuestionSectionViewModel: ViewModelBase
     {
-        private string answer="";
+        private string answer;
         private int timer;
         private Question question;
         private string questionContent;
@@ -40,6 +41,32 @@ namespace Familiada.ViewModel
             question = questions[randint];
             QuestionContent = question.QuestionContent;
         }
+
+        private ICommand check;
+        public ICommand Check
+        {
+            get
+            {
+                if (check == null)
+                {
+                    check = new RelayCommand(
+                        arg =>
+                        {
+                            Answer = "Działa";
+                        },
+                        arg => true
+                        );
+                }
+                return check;
+            }
+        }
+
+        public QuestionSectionViewModel()
+        {
+            Answer = "";
+        }
+
+
 
     }
 }

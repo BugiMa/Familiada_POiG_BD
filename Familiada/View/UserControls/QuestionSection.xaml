@@ -24,22 +24,23 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="{Binding QuestionContent, Mode=OneWay}" FontSize="20" Padding="20" TextAlignment="Center" Grid.Row="0" Grid.Column="0" >
+        <TextBlock Text="{Binding QuestionSection.QuestionContent, Mode=OneWay}" FontSize="20" Padding="20" TextAlignment="Center" Grid.Row="0" Grid.Column="0" >
             <TextBlock.Background>
                 <ImageBrush ImageSource="{StaticResource QuestionBox}"/>
             </TextBlock.Background>
         </TextBlock>
-        <TextBlock Text="{Binding Timer, Mode=OneWay}" Grid.Row="0" Grid.Column="1" >
+        <TextBlock Text="{Binding QuestionSection.Timer, Mode=OneWay}" Grid.Row="0" Grid.Column="1" >
             <TextBlock.Background>
                 <ImageBrush ImageSource="{StaticResource TimerBox}"/>
             </TextBlock.Background>
         </TextBlock>
 
-        <TextBox Text="{Binding Answer, Mode=TwoWay}" Grid.Row="1" Grid.Column="0" >
+        <TextBox Text="{Binding QuestionSection.Answer, Mode=TwoWay}" Grid.Row="1" Grid.Column="0" >
             <TextBox.Background>
                 <ImageBrush ImageSource="{StaticResource AnswerBox}" Stretch="Fill"/>
             </TextBox.Background>
         </TextBox>
+
         <Button Name="checkButton" Content="Sprawdź!" Command="{Binding CheckAnswer}" Grid.Row="1" Grid.Column="1" >
             <Button.Background>
                 <ImageBrush ImageSource="{StaticResource CheckButton}" Stretch="Fill"/>

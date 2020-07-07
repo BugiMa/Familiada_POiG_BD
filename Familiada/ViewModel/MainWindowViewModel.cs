@@ -45,14 +45,19 @@ namespace Familiada.ViewModel
                     checkAnswer = new RelayCommand(
                         arg =>
                         {
+                            int i = -1;
                             foreach (var rightAnswer in Board.RightAnswers)
                             {
-                                if (rightAnswer.Contains(QuestionSection.Answer))
+                                i++;
+                                if (QuestionSection.Answer!="" && rightAnswer.Contains(QuestionSection.Answer))
                                 {
-                                    Board.RightAnswers.Add("DZIALA");
-                                    QuestionSection.Answer = "";
-                                }                               
+                                    Board.Total += Convert.ToInt32(Board.Points[i]);
+                                    Board.RightAnswers[i] = "-------------";
+                                    
+                                    break;
+                                }
                             }
+                            QuestionSection.Answer = "";
                         },
                         arg => true
                         );
