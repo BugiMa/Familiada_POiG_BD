@@ -1,5 +1,5 @@
 ﻿using Familiada.ViewModel.Base;
-using Familiada.Model.DAL;
+using Familiada.Model;
 using System.Collections.Generic;
 
 namespace Familiada.ViewModel
@@ -7,7 +7,7 @@ namespace Familiada.ViewModel
     class BoardViewModel: ViewModelBase
     {
         private List<string> rightAnswers;
-        private List<int> points;
+        private List<string> points;
         private int total;
 
         public List<string> RightAnswers
@@ -15,7 +15,7 @@ namespace Familiada.ViewModel
             get => rightAnswers;
             set { rightAnswers = value; OnPropertyChanged(); }
         }
-        public List<int> Points
+        public List<string> Points
         {
             get => points;
             set { points = value; OnPropertyChanged(); }
@@ -26,14 +26,22 @@ namespace Familiada.ViewModel
             set { total = value; OnPropertyChanged(); }
         }
 
-       /* public List<string> GetRightAnswers(Question currentQuestion)
+        public void GetRightAnswers(Question currentQuestion)
         {
-            
-        }*/
+            foreach (var answer in currentQuestion.Answers)
+            {
+                RightAnswers.Add(answer);
+            }
+            foreach (var point in currentQuestion.Points)
+            {
+                Points.Add(point);
+            }
+        }
 
         public BoardViewModel()
         {
-
+            RightAnswers = new List<string>();
+            Points = new List<string>();
         }
 
 

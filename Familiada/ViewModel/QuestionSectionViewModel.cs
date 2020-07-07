@@ -7,7 +7,8 @@ namespace Familiada.ViewModel
     {
         private string answer;
         private int timer;
-        private Question currentQuestion;
+        private Question question;
+        private string questionContent;
 
         public string Answer
         {
@@ -20,12 +21,25 @@ namespace Familiada.ViewModel
             get => timer;
             set { timer = value; OnPropertyChanged(); }
         }
-        public Question CurrentQuestion
+        public Question Question
         {
-            get => currentQuestion;
-            set { currentQuestion = value; OnPropertyChanged(); }
+            get => question;
+            set { question = value; OnPropertyChanged(); }
+        }
+        public string QuestionContent
+        {
+            get => questionContent;
+            set { questionContent = value; OnPropertyChanged(); }
         }
 
+        public void GetRandomQuestion(Question[] questions)
+        {
+            System.Random rand = new System.Random();
+            int randint = rand.Next(0, questions.Length);
+
+            question = questions[randint];
+            QuestionContent = question.QuestionContent;
+        }
 
     }
 }

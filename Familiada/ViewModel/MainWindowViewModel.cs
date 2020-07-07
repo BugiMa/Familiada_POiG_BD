@@ -92,9 +92,12 @@ namespace Familiada.ViewModel
             Strasburger = new StrasburgerViewModel();
             QuestionSection = new QuestionSectionViewModel();
 
-            //questions = DataAccess.GetAllQuestions().ToArray();
+            questions = DataAccess.GetAllQuestions().ToArray();
 
             Music.PlayLooping();
+
+            QuestionSection.GetRandomQuestion(questions);
+            Board.GetRightAnswers(QuestionSection.Question);
         }
 
         

@@ -31,23 +31,56 @@ namespace Familiada.Model.DAL
         public static List<Question> GetAllQuestions()
         {
             List<Question> Questions = new List<Question>();
-            List<string> answers = new List<string>();
+            List<string[]> answers = new List<string[]>();
             List<int> points = new List<int>();
             List<string> questions = new List<string>();
             int questionID=0;
+            int answerID = 0;
             Question newq;
             
             using(connection = new MySqlConnection(connStrBuilder.ToString()))
             {
-                MySqlCommand command = new MySqlCommand(ALL_QUESTIONS_QUERY, connection);
+                
+                MySqlCommand command2 = new MySqlCommand(ALL_ANSWERS_QUERY, connection);
+
                 connection.Open();
-                var dataReader = command.ExecuteReader();
+                var dataReader = command2.ExecuteReader();
                 if (dataReader.HasRows)
                 {
                     while (dataReader.Read())
                     {
-                        questions[questionID] = dataReader["pytanie"].ToString();
-                        questionID = (int)dataReader["id_pytania"];
+                        answerID = (int)dataReader["id_odpowiedzi"]-1;
+                        answers.Add(new string[] { dataReader["id_pytania"].ToString(), dataReader["odpowiedz"].ToString(), dataReader["punkty"].ToString() });
+                        //points[answerID] = (int)dataReader["punkty"];
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Brak wyników zapytania");
+                }
+                connection.Close();
+
+                MySqlCommand command = new MySqlCommand(ALL_QUESTIONS_QUERY, connection);
+
+                connection.Open();
+                dataReader = command.ExecuteReader();
+
+                if (dataReader.HasRows)
+                {
+                    questionID = 0;
+                    while (dataReader.Read())
+                    {
+                        string[] currentAnswers = new string[6];
+                        string[] currentPoints = new string[6];
+
+                        for (int i = 6*questionID; i < (6*questionID)+6; i++)
+                        {
+                            currentAnswers[i-6*questionID] = answers[i][1];
+                            currentPoints[i-6*questionID] = answers[i][2];
+                        }
+                        
+                        questions.Add(dataReader["pytanie"].ToString());
+                        Questions.Add(new Question(questions[questionID], currentAnswers, currentPoints));
                         questionID++;
                     }
                 }
@@ -56,20 +89,7 @@ namespace Familiada.Model.DAL
                     Console.WriteLine("Brak wyników zapytania");
                 }
                 connection.Close();
-                MySqlCommand command2 = new MySqlCommand(ALL_ANSWERS_QUERY, connection);
-                connection.Open();
-                dataReader = command2.ExecuteReader();
-                if (dataReader.HasRows)
-                {
-                    while (dataReader.Read())
-                    {
-                        answers[questionID] = dataReader["odpowiedz"].ToString();
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Brak wyników zapytania");
-                }
+                
             }
 
             return Questions;

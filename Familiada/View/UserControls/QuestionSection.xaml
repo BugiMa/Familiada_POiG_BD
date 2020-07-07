@@ -24,7 +24,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="{Binding Question, Mode=OneWay}" Grid.Row="0" Grid.Column="0" >
+        <TextBlock Text="{Binding QuestionContent, Mode=OneWay}" FontSize="20" Padding="20" TextAlignment="Center" Grid.Row="0" Grid.Column="0" >
             <TextBlock.Background>
                 <ImageBrush ImageSource="{StaticResource QuestionBox}"/>
             </TextBlock.Background>

@@ -10,9 +10,9 @@ namespace Familiada.Model
     {
         public string QuestionContent { get; set; }
         public string[] Answers;
-        public int[] Points;
+        public string[] Points;
 
-        public Question(string QuestionContent, string[] Answers, int[] Points)
+        public Question(string QuestionContent, string[] Answers, string[] Points)
         {
             this.QuestionContent = QuestionContent;
             this.Answers = Answers;
