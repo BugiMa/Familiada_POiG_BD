@@ -61,7 +61,6 @@ namespace Familiada.ViewModel
                             Board.Total += Convert.ToInt32(Board.Points[i]);
                             Board.DisplayedAnswers[i] =(i+1)+". "+QuestionSection.Answer;
                                 Strasburger.CurrentGifPath = "/GameResources/STRASBURGER_WOW.gif";
-                                Strasburger.GetRandomJoke();
                             break;
                         }
                         else
@@ -73,13 +72,20 @@ namespace Familiada.ViewModel
                             {
                                 Board.Loss++;
                                 Strasburger.CurrentGifPath = "/GameResources/STRASBURGER_Boo.gif";
-                                Strasburger.GetRandomJoke();
                             }
                     }
                     if(Board.Loss==3)
                     {
-                            //Board.Visible = "Hidden";
-                            NewQuestion();
+                            if (round == 5)
+                            {
+                                Board.Visible = "Hidden";
+                                QuestionSection.Stopwatch.Stop();
+                            }
+                            else
+                            {
+                                NewQuestion();
+                                Strasburger.GetRandomJoke();
+                            }
                     }
 
 
