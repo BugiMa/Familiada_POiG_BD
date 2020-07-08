@@ -11,7 +11,6 @@ namespace Familiada.ViewModel
 
     class GameOverViewModel:ViewModelBase
     {
-
         private string visible = "";
         public string Visible
         {
