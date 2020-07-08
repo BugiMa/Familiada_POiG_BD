@@ -7,6 +7,10 @@
              xmlns:local="clr-namespace:Familiada.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="550">
+
+    <UserControl.Resources>
+        <BitmapImage x:Key="MenuBoard" UriSource="/GameResources/MenuBoard.png"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -15,7 +19,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-
+        <Image Source ="{StaticResource MenuBoard}" Stretch="Fill" Grid.RowSpan="2"/>
         <TextBox Margin="20,20,20,20" FontSize="32" Text="{Binding Menu.TeamName,Mode=TwoWay}" TextAlignment="Center" Padding="35" FontFamily="{StaticResource MesseDuesseldorf}" />
         <Button Command="{Binding Menu.NewGame}" Content="Graj!" Grid.Row="1" Margin="200,50,200,50" FontSize="48" FontFamily="{StaticResource MesseDuesseldorf}"/>
     </Grid>
