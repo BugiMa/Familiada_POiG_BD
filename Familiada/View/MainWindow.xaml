@@ -29,8 +29,8 @@
         </Grid.RowDefinitions>
 
 
-        <local:Menu             DataContext="{Binding Menu}"            Grid.Column="1" Grid.Row="1"  Visibility="{Binding Hidden}" Background="White"/>
-        <local1:GameOver        DataContext="{Binding GameOver}"            Grid.Column="1" Grid.Row="1"  Visibility="{Binding Hidden}" Background="White"/>
+        <local:Menu             DataContext="{Binding Menu}"            Grid.Column="1" Grid.Row="1"  Visibility="{Binding Visible}" Background="White"/>
+        <local1:GameOver        DataContext="{Binding GameOver}"        Grid.Column="1" Grid.Row="1"  Visibility="{Binding Visible}" Background="White"/>
         <local:Strasburger      DataContext="{Binding Strasburger}"     Grid.Column="0" Grid.Row="1"/>
         <local:Board            DataContext="{Binding Board}"           Grid.Column="1" Grid.Row="1"/>
         <local:QuestionSection  Grid.Column="0" Grid.Row="2"  Grid.ColumnSpan="2"/>
