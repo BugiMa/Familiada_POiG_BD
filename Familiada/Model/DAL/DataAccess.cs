@@ -120,5 +120,19 @@ namespace Familiada.Model.DAL
 
             return jokes;
         }
+
+        public static string[] GetYays()
+        {
+            string[] yayReactions = System.IO.File.ReadAllLines("../../GameResources/StrasburgerYay.txt");
+
+
+            return yayReactions;
+        }
+        public static string[] GetBoos()
+        {
+            string[] booReactions = System.IO.File.ReadAllLines("../../GameResources/StrasburgerBoo.txt");
+
+            return booReactions;
+        }
     }
 }

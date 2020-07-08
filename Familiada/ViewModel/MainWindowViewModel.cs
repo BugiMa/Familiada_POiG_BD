@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Input;
 using System.Media;
 using Microsoft.VisualBasic;
@@ -71,7 +71,8 @@ namespace Familiada.ViewModel
                         {
                             Board.Total += Convert.ToInt32(Board.Points[i]);
                             Board.DisplayedAnswers[i] =(i+1)+". "+QuestionSection.Answer.ToUpper();
-                                Strasburger.CurrentGifPath = "/GameResources/STRASBURGER_WOW.gif";
+                            Strasburger.CurrentGifPath = "/GameResources/STRASBURGER_WOW.gif";
+                                Strasburger.GetRandomYay();
                             break;
                         }
                         else
@@ -84,6 +85,7 @@ namespace Familiada.ViewModel
                                 Board.Loss++;
                                 Board.CrossPaths[Board.Loss-1] = "/GameResources/Cross.gif";
                                 Strasburger.CurrentGifPath = "/GameResources/STRASBURGER_Boo.gif";
+                                Strasburger.GetRandomBoo();
                             }
                     }
                     if(Board.Loss==3)
@@ -96,6 +98,7 @@ namespace Familiada.ViewModel
                             }
                             else
                             {
+                                Strasburger.GetRandomJoke();
                                 NewQuestion();
                             }
                     }
@@ -184,7 +187,7 @@ namespace Familiada.ViewModel
                 QuestionSection.GetRandomQuestion(questions);
                 Board.GetRightAnswers(QuestionSection.Question);
                 Board.GetDisplayedAnswers(QuestionSection.Question);
-                Strasburger.GetRandomJoke();
+
 
                 Board.Loss = 0;
                 QuestionSection.Stopwatch.Restart();
