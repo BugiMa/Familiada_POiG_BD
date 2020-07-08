@@ -9,8 +9,8 @@ namespace Familiada.ViewModel
     class BoardViewModel: ViewModelBase
     {
         private ObservableCollection<string> rightAnswers;
-        //private List<string> displayedAnswers;
-        private List<string> points;
+        private ObservableCollection<string> displayedAnswers;
+        private ObservableCollection<string> points;
         private int total;
 
         public ObservableCollection<string> RightAnswers
@@ -19,12 +19,12 @@ namespace Familiada.ViewModel
             set { rightAnswers = value; this.OnPropertyChanged(); }
         }
 
-       /* public List<string> DisplayedAnswers
+       public ObservableCollection<string> DisplayedAnswers
         {
             get => displayedAnswers;
             set { displayedAnswers = value; this.OnPropertyChanged(); }
-        }*/
-        public List<string> Points
+        }
+        public ObservableCollection<string> Points
         {
             get => points;
             set { points = value; OnPropertyChanged(); }
@@ -50,7 +50,13 @@ namespace Familiada.ViewModel
         public BoardViewModel()
         {
             RightAnswers = new ObservableCollection<string>();
-            Points = new List<string>();
+            DisplayedAnswers = new ObservableCollection<string>();
+            Points = new ObservableCollection<string>();
+
+            for (int i = 0; i < 6; i++)
+            {
+                DisplayedAnswers.Add((i+1)+". ---------------");
+            }
         }
 
 

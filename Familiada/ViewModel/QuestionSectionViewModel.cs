@@ -1,23 +1,27 @@
 ﻿using Familiada.ViewModel.Base;
 using Familiada.Model;
 using System.Windows.Input;
+using System.Timers;
+using System.Diagnostics;
 
 namespace Familiada.ViewModel
 {
     class QuestionSectionViewModel: ViewModelBase
     {
         private string answer;
-        private int timer;
+        private Timer realTimer;
+        private string timer;
         private Question question;
         private string questionContent;
+        private Stopwatch stopwatch;
 
         public string Answer
         {
             get => answer;
             set { answer = value; OnPropertyChanged(); }
         }
-
-        public int Timer
+        
+        public string Timer
         {
             get => timer;
             set { timer = value; OnPropertyChanged(); }
@@ -40,30 +44,23 @@ namespace Familiada.ViewModel
 
             question = questions[randint];
             QuestionContent = question.QuestionContent;
+
+            realTimer = new Timer(1000);
+            realTimer.Elapsed += TimeTicking;
+            realTimer.Start();
+            stopwatch.Restart();
         }
 
-        private ICommand check;
-        public ICommand Check
+        private void TimeTicking(object source, ElapsedEventArgs e)
         {
-            get
-            {
-                if (check == null)
-                {
-                    check = new RelayCommand(
-                        arg =>
-                        {
-                            Answer = "Działa";
-                        },
-                        arg => true
-                        );
-                }
-                return check;
-            }
+            int timeLeft = 30 - stopwatch.Elapsed.Seconds;
+            Timer = timeLeft.ToString();
         }
-
+       
         public QuestionSectionViewModel()
         {
             Answer = "";
+            stopwatch = new Stopwatch();
         }
 
 

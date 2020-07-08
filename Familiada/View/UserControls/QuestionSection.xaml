@@ -24,18 +24,18 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="{Binding QuestionSection.QuestionContent, Mode=OneWay}" FontSize="20" Padding="20" TextAlignment="Center" Grid.Row="0" Grid.Column="0" >
+        <TextBlock Text="{Binding QuestionSection.QuestionContent, Mode=OneWay}" FontSize="20" Padding="50" TextAlignment="Center" Grid.Row="0" Grid.Column="0" >
             <TextBlock.Background>
                 <ImageBrush ImageSource="{StaticResource QuestionBox}"/>
             </TextBlock.Background>
         </TextBlock>
-        <TextBlock Text="{Binding QuestionSection.Timer, Mode=OneWay}" Grid.Row="0" Grid.Column="1" >
+        <TextBlock Text="{Binding QuestionSection.Timer, Mode=OneWay}" TextAlignment="Center" TextWrapping="Wrap" FontSize="24" Padding="50" Grid.Row="0" Grid.Column="1" >
             <TextBlock.Background>
                 <ImageBrush ImageSource="{StaticResource TimerBox}"/>
             </TextBlock.Background>
         </TextBlock>
 
-        <TextBox Text="{Binding QuestionSection.Answer, Mode=TwoWay}" Grid.Row="1" Grid.Column="0" >
+        <TextBox Text="{Binding QuestionSection.Answer, Mode=TwoWay}" FontSize="20" Padding="5" Grid.Row="1" Grid.Column="0" >
             <TextBox.Background>
                 <ImageBrush ImageSource="{StaticResource AnswerBox}" Stretch="Fill"/>
             </TextBox.Background>
