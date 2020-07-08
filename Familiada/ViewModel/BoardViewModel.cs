@@ -59,7 +59,7 @@ namespace Familiada.ViewModel
         {
             for(int i=0; i<6;i++)
             {
-                DisplayedAnswers.Add("----------------");
+                DisplayedAnswers.Add((i+1)+". ----------------");
             }
         }
         public BoardViewModel()

@@ -54,7 +54,7 @@ namespace Familiada.ViewModel
                         if (QuestionSection.Answer != "" && rightAnswer.Contains(QuestionSection.Answer))
                         {
                             Board.Total += Convert.ToInt32(Board.Points[i]);
-                            Board.DisplayedAnswers[i] = QuestionSection.Answer;
+                            Board.DisplayedAnswers[i] = (i+1)+". "+QuestionSection.Answer;
                             break;
                         }
                         else
