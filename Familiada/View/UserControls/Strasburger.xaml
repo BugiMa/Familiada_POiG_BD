@@ -17,7 +17,7 @@
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="{Binding Saying, Mode=OneWay}" Padding="20" TextAlignment="Center" FontSize="20" TextTrimming="WordEllipsis" TextWrapping="Wrap" Grid.Row="0">
+        <TextBlock Text="{Binding Saying, Mode=OneWay}" Padding="20" TextAlignment="Center" FontSize="24" TextTrimming="WordEllipsis" TextWrapping="Wrap" Grid.Row="0" FontFamily="{StaticResource MesseDuesseldorf}">
             <TextBlock.Background>
                 <ImageBrush ImageSource="{StaticResource StrasburgerText}"/>
             </TextBlock.Background>

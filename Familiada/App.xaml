@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:Familiada"
              StartupUri="View/MainWindow.xaml">
     <Application.Resources>
-         
+        <FontFamily x:Key="MesseDuesseldorf">pack://application:,,,/GameResources/Fonts/#Messe Duesseldorf</FontFamily>
     </Application.Resources>
 </Application>
