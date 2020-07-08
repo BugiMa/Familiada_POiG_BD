@@ -218,8 +218,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Familjadee.wav" />
-    <Resource Include="GameResources\AnswerBox.png" />
+    <Resource Include="GameResources\NoCross.gif" />
+    <Resource Include="GameResources\WindowBackground.png" />
+    <Resource Include="GameResources\Cross.gif" />
     <Resource Include="GameResources\Board.png" />
+    <Resource Include="GameResources\AnswerBox.png" />
     <Resource Include="GameResources\CheckButton.png" />
     <Resource Include="GameResources\QuestionBox.png" />
     <Resource Include="GameResources\StrasburgerBox.png" />

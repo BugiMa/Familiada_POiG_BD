@@ -59,7 +59,7 @@ namespace Familiada.ViewModel
                         if (QuestionSection.Answer != "" && rightAnswer.Contains(QuestionSection.Answer) && !Board.DisplayedAnswers.Contains(QuestionSection.Answer))
                         {
                             Board.Total += Convert.ToInt32(Board.Points[i]);
-                            Board.DisplayedAnswers[i] =(i+1)+". "+QuestionSection.Answer;
+                            Board.DisplayedAnswers[i] =(i+1)+". "+QuestionSection.Answer.ToUpper();
                                 Strasburger.CurrentGifPath = "/GameResources/STRASBURGER_WOW.gif";
                             break;
                         }
@@ -71,6 +71,7 @@ namespace Familiada.ViewModel
                             if (notIt == 6)
                             {
                                 Board.Loss++;
+                                Board.CrossPaths[Board.Loss-1] = "/GameResources/Cross.gif";
                                 Strasburger.CurrentGifPath = "/GameResources/STRASBURGER_Boo.gif";
                             }
                     }
@@ -84,7 +85,6 @@ namespace Familiada.ViewModel
                             else
                             {
                                 NewQuestion();
-                                Strasburger.GetRandomJoke();
                             }
                     }
 
@@ -172,10 +172,15 @@ namespace Familiada.ViewModel
                 QuestionSection.GetRandomQuestion(questions);
                 Board.GetRightAnswers(QuestionSection.Question);
                 Board.GetDisplayedAnswers(QuestionSection.Question);
+                Strasburger.GetRandomJoke();
 
                 Board.Loss = 0;
                 QuestionSection.Stopwatch.Restart();
                 round++;
+            for (int i = 0; i <3; i++)
+            {
+                Board.CrossPaths[i] = "/GameResources/NoCross.gif";
+            }
         }
 
         private void TimerSourceUpdated(object sender, DataTransferEventArgs e)

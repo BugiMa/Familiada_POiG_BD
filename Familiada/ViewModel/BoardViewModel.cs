@@ -15,6 +15,7 @@ namespace Familiada.ViewModel
         private int total;
         private int loss;
         private string visible;
+        private ObservableCollection<string> crossPaths;
 
         public ObservableCollection<string> RightAnswers
         {
@@ -52,6 +53,15 @@ namespace Familiada.ViewModel
             }
         }
 
+        public ObservableCollection<string> CrossPaths
+        {
+            get => crossPaths;
+            set
+            {
+                crossPaths = value;
+                OnPropertyChanged();
+            }
+        }
         public void GetRightAnswers(Question currentQuestion)
         {
             RightAnswers.Clear();
@@ -80,6 +90,11 @@ namespace Familiada.ViewModel
             RightAnswers = new ObservableCollection<string>();
             Points = new ObservableCollection<string>();
             Visible = "Visible";
+            CrossPaths = new ObservableCollection<string>();
+            for (int i = 0; i < 3; i++)
+            {
+                CrossPaths.Add("/GameResources/NoCross.gif");
+            }
         }
 
 

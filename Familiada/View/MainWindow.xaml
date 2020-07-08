@@ -9,10 +9,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="640" Width="960">
     <Window.Background>
-        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-            <GradientStop Color="#FFFFAEE2" Offset="0"/>
-            <GradientStop Color="#FF570037" Offset="1"/>
-        </LinearGradientBrush>
+        <ImageBrush ImageSource="/GameResources/WindowBackground.png"/>
     </Window.Background>
     <Window.DataContext>
         <viewModel:MainWindowViewModel />
