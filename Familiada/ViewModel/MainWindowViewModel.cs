@@ -76,7 +76,7 @@ namespace Familiada.ViewModel
                     }
                     if(Board.Loss==3)
                     {
-                            Board.Total = 0;
+                            Board.Visible = "Hidden";
                     }
 
 

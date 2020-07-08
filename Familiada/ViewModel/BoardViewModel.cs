@@ -14,6 +14,7 @@ namespace Familiada.ViewModel
         private List<string> points;
         private int total;
         private int loss;
+        private string visible;
 
         public ObservableCollection<string> RightAnswers
         {
@@ -41,7 +42,15 @@ namespace Familiada.ViewModel
             get => loss;
             set { loss = value; OnPropertyChanged(); }
         }
-
+        public string Visible
+        {
+            get => visible;
+            set
+            {
+                visible = value;
+                OnPropertyChanged();
+            }
+        }
 
         public void GetRightAnswers(Question currentQuestion)
         {
@@ -67,6 +76,7 @@ namespace Familiada.ViewModel
             displayedAnswers = new ObservableCollection<string>();
             RightAnswers = new ObservableCollection<string>();
             Points = new List<string>();
+            Visible = "Visible";
         }
 
 
