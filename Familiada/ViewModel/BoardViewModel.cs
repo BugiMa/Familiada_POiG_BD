@@ -24,7 +24,7 @@ namespace Familiada.ViewModel
         public ObservableCollection<string> DisplayedAnswers
         {
             get => displayedAnswers;
-            set { displayedAnswers = value; this.OnPropertyChanged(); }
+            set { displayedAnswers = value; OnPropertyChanged(); }
         }
         public List<string> Points
         {

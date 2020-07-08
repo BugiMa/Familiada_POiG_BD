@@ -48,22 +48,22 @@ namespace Familiada.ViewModel
                     arg =>
                     {
                     int i = -1;
+                        int notIt = 0;
                     foreach (var rightAnswer in Board.RightAnswers)
                     {
                         i++;
                         if (QuestionSection.Answer != "" && rightAnswer.Contains(QuestionSection.Answer))
                         {
                             Board.Total += Convert.ToInt32(Board.Points[i]);
-                            Board.DisplayedAnswers[i] = (i+1)+". "+QuestionSection.Answer;
+                            Board.DisplayedAnswers[i] =(i+1)+". "+QuestionSection.Answer;
                             break;
                         }
                         else
                         {
-                             Board.Loss++;
-                             break;      
+                                notIt++;                                
                         }
 
-
+                            if (notIt == 6) Board.Loss++;
                     }
                     if(Board.Loss==3)
                     {
@@ -124,8 +124,9 @@ namespace Familiada.ViewModel
 
             Music.PlayLooping();
             QuestionSection.GetRandomQuestion(questions);
-            Board.GetDisplayedAnswers(QuestionSection.Question);
             Board.GetRightAnswers(QuestionSection.Question);
+            Board.GetDisplayedAnswers(QuestionSection.Question);
+            
 
         }
 
