@@ -13,6 +13,8 @@ namespace Familiada.ViewModel
     using Base;
     using Model;
     using Model.DAL;
+    using System.Windows.Controls;
+
     class MainWindowViewModel: ViewModelBase
     {
         public MenuViewModel Menu { get; set; }
@@ -43,26 +45,26 @@ namespace Familiada.ViewModel
                 if (checkAnswer == null)
                 {
                     checkAnswer = new RelayCommand(
-                        arg =>
+                    arg =>
+                    {
+                    int i = -1;
+                    foreach (var rightAnswer in Board.RightAnswers)
+                    {
+                        i++;
+                        if (QuestionSection.Answer != "" && rightAnswer.Contains(QuestionSection.Answer))
                         {
-                            int i = -1;
-                            foreach (var rightAnswer in Board.RightAnswers)
-                            {
-                                i++;
-                                if (QuestionSection.Answer!="" && rightAnswer.Contains(QuestionSection.Answer))
-                                {
-                                    Board.Total += Convert.ToInt32(Board.Points[i]);
-                                    Board.RightAnswers[i] = "-------------";
-                                    
-                                    break;
-                                }
-                            }
+                            Board.Total += Convert.ToInt32(Board.Points[i]);
+                            Board.RightAnswers[i] = "-------------";
+                            break;
+                        }
+                    }
                             QuestionSection.Answer = "";
-                        },
-                        arg => true
-                        );
-                }
-                return checkAnswer;
+                    },
+                    arg => true
+                    );
+
+                    }
+                    return checkAnswer;
             }
         }
 

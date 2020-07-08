@@ -34,7 +34,7 @@ namespace Familiada.ViewModel.Base
                 if (this._canExecute != null) CommandManager.RequerySuggested -= value;
             }
         }
-
+       
         public void Execute(object parameter)
         {
             this._execute(parameter);
