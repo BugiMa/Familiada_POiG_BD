@@ -22,7 +22,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="LICZBA PUNKTOW KONCOWYCH ( NIE CHCE SIE TOTAL ZBINDOWAC NW)" FontSize="20" TextAlignment="Center" Padding="35" Grid.ColumnSpan="4" Margin="0,0,10,0" Grid.RowSpan="3" />
+        <TextBlock Text="{Binding FinalMessage}" FontSize="20" TextAlignment="Center" Padding="35" Grid.ColumnSpan="4" Margin="0,0,10,0" Grid.RowSpan="3" />
         <Button Command="{Binding NewGame}" Content="Nowa Gra" Grid.Row="5" Grid.Column="0" FontSize="20" Margin="5,5,5,5"/>
         <Button Command="{Binding NewGame}" Content="Najlepsze wyniki" Grid.Row="5" Grid.Column="1" FontSize="20" Margin="5,5,5,5"/>
         <Button Command="{Binding NewGame}" Content="Instrukcja" Grid.Row="5" Grid.Column="2" FontSize="20" Margin="5,5,5,5"/>

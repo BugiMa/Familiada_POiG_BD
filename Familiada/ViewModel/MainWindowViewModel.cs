@@ -25,8 +25,19 @@ namespace Familiada.ViewModel
         public BoardViewModel Board { get; set; }
         public QuestionSectionViewModel QuestionSection { get; set; }
         public StrasburgerViewModel Strasburger { get; set; }
+        public GameOverViewModel GameOver { get; set; }
         private Question[] questions;
         private int round;
+        private string finalMessage;
+        public string FinalMessage
+        {
+            get => finalMessage;
+            set
+            {
+                finalMessage = value;
+                OnPropertyChanged();
+            }
+        }
 
         public SoundPlayer Music { get; set; }
         private bool musicOn;
@@ -79,6 +90,7 @@ namespace Familiada.ViewModel
                     {
                             if (round == 5)
                             {
+                                FinalMessage = "Gratulacje " + Menu.TeamName + "! Twoja drużyna uzyskała " + Board.Total + " punktów.";
                                 Board.Visible = "Hidden";
                                 QuestionSection.Stopwatch.Stop();
                             }
@@ -177,6 +189,7 @@ namespace Familiada.ViewModel
                 Board.Loss = 0;
                 QuestionSection.Stopwatch.Restart();
                 round++;
+
             for (int i = 0; i <3; i++)
             {
                 Board.CrossPaths[i] = "/GameResources/NoCross.gif";

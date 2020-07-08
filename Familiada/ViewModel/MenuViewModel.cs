@@ -10,7 +10,18 @@ namespace Familiada.ViewModel
     using Base;
     class MenuViewModel: ViewModelBase
     {
-        public string TeamName { get; set; }
+        private string teamName;
+
+        public string TeamName
+        {
+            get => teamName;
+            set
+            {
+                teamName = value;
+                OnPropertyChanged();
+            }
+        }
+
         private string visible="";
         public string Visible
         {
@@ -44,6 +55,7 @@ namespace Familiada.ViewModel
 
         public MenuViewModel()
         {
+            teamName = "";
         }
     }
 }
