@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="Familiada.View.UserControls.GameOver"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Familiada.View.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <TextBox Text="GAME OVER" FontSize="32" TextAlignment="Center" Padding="35" Grid.ColumnSpan="4" Margin="0,0,10,0" Grid.RowSpan="3" />
+        <Button Command="{Binding NewGame}" Content="Nowa Gra" Grid.Row="4" Grid.Column="0" FontSize="32"/>
+        <!--<Button Command="{Binding NewGame}" Content="Nowa Gra" Grid.Row="4" Grid.Column="0" FontSize="32"/>
+        <Button Command="{Binding NewGame}" Content="Nowa Gra" Grid.Row="4" Grid.Column="0" FontSize="32"/>
+        <Button Command="{Binding NewGame}" Content="Nowa Gra" Grid.Row="4" Grid.Column="0" FontSize="32"/>-->
+    </Grid>
+</UserControl>
