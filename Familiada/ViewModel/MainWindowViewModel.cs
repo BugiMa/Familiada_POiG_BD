@@ -48,16 +48,19 @@ namespace Familiada.ViewModel
                     arg =>
                     {
                     int i = -1;
-                        int j = -1;
-                        foreach (var rightAnswer in Board.RightAnswers)
+                    int j = -1;
+                    foreach (var rightAnswer in Board.RightAnswers)
                     {
                         i++;
                         if (QuestionSection.Answer != "" && rightAnswer.Contains(QuestionSection.Answer))
                         {
                             Board.Total += Convert.ToInt32(Board.Points[i]);
-                            Board.RightAnswers[i] = "-------------";
-                                Board.DisplayedAnswers[i] = QuestionSection.Answer;
+                            Board.DisplayedAnswers[i] = QuestionSection.Answer;
                             break;
+                        }
+                        else
+                        {
+
                         }
                     }
 
