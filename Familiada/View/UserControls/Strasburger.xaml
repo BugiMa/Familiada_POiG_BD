@@ -23,8 +23,8 @@
             </TextBlock.Background>
         </TextBlock>   <!--Wypowiedzi Strasburgera-->
 
-        <Image gif:ImageBehavior.AnimatedSource="/GameResources/STRASBURGER_Talking.gif" Stretch="Fill" 
-               gif:ImageBehavior.RepeatBehavior="6x" Grid.Row="1"/>       <!--Animowany Strasburger-->
+        <Image gif:ImageBehavior.AnimatedSource="{Binding CurrentGifPath}" Stretch="Fill" 
+               gif:ImageBehavior.RepeatBehavior="3x" Grid.Row="1"/>       <!--Animowany Strasburger-->
 
     </Grid>
 </UserControl>

@@ -1,5 +1,6 @@
 ﻿using Familiada.ViewModel.Base;
 using Familiada.Model.DAL;
+using System.Runtime;
 
 namespace Familiada.ViewModel
 {
@@ -7,6 +8,7 @@ namespace Familiada.ViewModel
     {
         private string[] whatStrasburgerHasToSay;
         private string saying;
+        private string currentGifPath;
         //private Image strasburger;
         public string Saying
         {
@@ -17,10 +19,20 @@ namespace Familiada.ViewModel
                 OnPropertyChanged();
             }
         }
+        public string CurrentGifPath
+        {
+            get => currentGifPath;
+            set
+            {
+                currentGifPath = value;
+                OnPropertyChanged();
+            }
+        }
 
         public StrasburgerViewModel()
         {
             Saying = "Witaj w Familiadzie! Wpisz nazwę swojej drużyny.";
+            CurrentGifPath = "/GameResources/STRASBURGER_Talking.gif";
             whatStrasburgerHasToSay = DataAccess.GetAllJokes().ToArray();
         }
 
@@ -30,6 +42,7 @@ namespace Familiada.ViewModel
             int randint = rand.Next(0,whatStrasburgerHasToSay.Length-1);
 
             Saying = whatStrasburgerHasToSay[randint];
+            
         }
     }
 }

@@ -6,14 +6,14 @@ using System.Diagnostics;
 
 namespace Familiada.ViewModel
 {
-    class QuestionSectionViewModel: ViewModelBase
+    class QuestionSectionViewModel : ViewModelBase
     {
         private string answer;
-        private Timer realTimer;
+        public Timer RealTimer;
         private string timer;
         private Question question;
         private string questionContent;
-        private Stopwatch stopwatch;
+        public Stopwatch Stopwatch {get;set;}
 
         public string Answer
         {
@@ -44,23 +44,21 @@ namespace Familiada.ViewModel
 
             question = questions[randint];
             QuestionContent = question.QuestionContent;
-
-            realTimer = new Timer(1000);
-            realTimer.Elapsed += TimeTicking;
-            realTimer.Start();
-            stopwatch.Restart();
         }
 
         private void TimeTicking(object source, ElapsedEventArgs e)
         {
-            int timeLeft = 30 - stopwatch.Elapsed.Seconds;
+            int timeLeft = 60 - Stopwatch.Elapsed.Seconds;
             Timer = timeLeft.ToString();
         }
        
         public QuestionSectionViewModel()
         {
             Answer = "";
-            stopwatch = new Stopwatch();
+            Stopwatch = new Stopwatch();
+            RealTimer = new Timer(1000);
+            RealTimer.Elapsed += TimeTicking;
+            RealTimer.Start();
         }
 
 

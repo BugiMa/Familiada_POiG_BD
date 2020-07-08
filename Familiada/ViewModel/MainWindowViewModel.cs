@@ -7,6 +7,9 @@ using System.Windows.Input;
 using System.Media;
 using Microsoft.VisualBasic;
 using System.Windows.Forms;
+using System.Timers;
+using System.Diagnostics;
+using System.Windows.Threading;
 
 namespace Familiada.ViewModel
 {
@@ -22,7 +25,8 @@ namespace Familiada.ViewModel
         public QuestionSectionViewModel QuestionSection { get; set; }
         public StrasburgerViewModel Strasburger { get; set; }
         private Question[] questions;
-        
+        private bool newGame;
+        private int round;
 
         public SoundPlayer Music { get; set; }
         private bool musicOn;
@@ -48,7 +52,7 @@ namespace Familiada.ViewModel
                     arg =>
                     {
                     int i = -1;
-                        int notIt = 0;
+                    int notIt = 0;
                     foreach (var rightAnswer in Board.RightAnswers)
                     {
                         i++;
@@ -56,6 +60,7 @@ namespace Familiada.ViewModel
                         {
                             Board.Total += Convert.ToInt32(Board.Points[i]);
                             Board.DisplayedAnswers[i] =(i+1)+". "+QuestionSection.Answer;
+                                Strasburger.CurrentGifPath = "/GameResources/STRASBURGER_WOW.gif";
                             break;
                         }
                         else
@@ -63,14 +68,16 @@ namespace Familiada.ViewModel
                                 notIt++;                                
                         }
 
-                            if (notIt == 6) Board.Loss++;
+                            if (notIt == 6)
+                            {
+                                Board.Loss++;
+                                Strasburger.CurrentGifPath = "/GameResources/STRASBURGER_Boo.gif";
+                            }
                     }
                     if(Board.Loss==3)
                     {
                             Board.Total = 0;
                     }
-                        
-
 
 
                         QuestionSection.Answer = "";
@@ -112,6 +119,8 @@ namespace Familiada.ViewModel
 
         public MainWindowViewModel()
         {
+            round = 0;
+            newGame = true;
             Music = new SoundPlayer(@"..\..\Familjadee.wav");
             MusicOn = true;
 
@@ -123,20 +132,56 @@ namespace Familiada.ViewModel
             questions = DataAccess.GetAllQuestions().ToArray();
 
             Music.PlayLooping();
-            QuestionSection.GetRandomQuestion(questions);
-            Board.GetRightAnswers(QuestionSection.Question);
-            Board.GetDisplayedAnswers(QuestionSection.Question);
-            
 
+            NewQuestion();
+
+            //QuestionSection.RealTimer.Elapsed+=GameLoop;
         }
 
-        public void GameLoop()
+        public void NewQuestion()
         {
-           
-             
+                QuestionSection.GetRandomQuestion(questions);
+                Board.GetRightAnswers(QuestionSection.Question);
+                Board.GetDisplayedAnswers(QuestionSection.Question);
+
+                Board.Loss = 0;
+                QuestionSection.Stopwatch.Restart();
+                round++;
         }
 
+        /*public void GameLoop(object source, ElapsedEventArgs e)
+        {
+            if (Menu.Visible == "Hidden")
+            {
+                if (newGame)
+                {
+                    newGame = false;
+                    QuestionSection.Stopwatch.Start();
+
+                    NewQuestion();
+
+                    
+                }
+                else
+                {
+                    while (QuestionSection.RealTimer.Enabled)
+                    {
+                        if (QuestionSection.Timer == "0" || Board.Loss == 3)
+                        {
+                            //QuestionSection.Stopwatch.Stop();
+                            Board.Loss = 0;
+
+                            NewQuestion();
+
+                            QuestionSection.Stopwatch.Restart();
+                        }
+                    }
+                }
+            }
+        }*/
         
+
+
 
     }
 }
