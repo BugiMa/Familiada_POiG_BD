@@ -3,6 +3,7 @@ using Familiada.Model;
 using System.Collections.Generic;
 using System;
 using System.Collections.ObjectModel;
+using Familiada.View;
 
 namespace Familiada.ViewModel
 {
@@ -10,8 +11,9 @@ namespace Familiada.ViewModel
     {
         private ObservableCollection<string> rightAnswers;
         private ObservableCollection<string> displayedAnswers;
-        private ObservableCollection<string> points;
+        private List<string> points;
         private int total;
+        private int loss;
 
         public ObservableCollection<string> RightAnswers
         {
@@ -19,12 +21,12 @@ namespace Familiada.ViewModel
             set { rightAnswers = value; this.OnPropertyChanged(); }
         }
 
-       public ObservableCollection<string> DisplayedAnswers
+        public ObservableCollection<string> DisplayedAnswers
         {
             get => displayedAnswers;
             set { displayedAnswers = value; this.OnPropertyChanged(); }
         }
-        public ObservableCollection<string> Points
+        public List<string> Points
         {
             get => points;
             set { points = value; OnPropertyChanged(); }
@@ -34,6 +36,12 @@ namespace Familiada.ViewModel
             get => total;
             set { total = value; OnPropertyChanged(); }
         }
+        public int Loss
+        {
+            get => loss;
+            set { loss = value; OnPropertyChanged(); }
+        }
+
 
         public void GetRightAnswers(Question currentQuestion)
         {
@@ -46,17 +54,19 @@ namespace Familiada.ViewModel
                 Points.Add(point);
             }
         }
-        
+
+        public void GetDisplayedAnswers(Question currentQuestion)
+        {
+            for(int i=0; i<6;i++)
+            {
+                DisplayedAnswers.Add("----------------");
+            }
+        }
         public BoardViewModel()
         {
+            displayedAnswers = new ObservableCollection<string>();
             RightAnswers = new ObservableCollection<string>();
-            DisplayedAnswers = new ObservableCollection<string>();
-            Points = new ObservableCollection<string>();
-
-            for (int i = 0; i < 6; i++)
-            {
-                DisplayedAnswers.Add((i+1)+". ---------------");
-            }
+            Points = new List<string>();
         }
 
 

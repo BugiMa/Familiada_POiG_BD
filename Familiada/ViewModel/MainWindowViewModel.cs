@@ -51,23 +51,37 @@ namespace Familiada.ViewModel
                     foreach (var rightAnswer in Board.RightAnswers)
                     {
                         i++;
-                        if (QuestionSection.Answer != "" && rightAnswer.Contains(QuestionSection.Answer) && !Board.DisplayedAnswers.Contains(QuestionSection.Answer))
+                        if (QuestionSection.Answer != "" && rightAnswer.Contains(QuestionSection.Answer))
                         {
                             Board.Total += Convert.ToInt32(Board.Points[i]);
-                                Board.DisplayedAnswers[i] = (i+1)+". "+QuestionSection.Answer.ToUpper();
+                            Board.DisplayedAnswers[i] = QuestionSection.Answer;
                             break;
                         }
+                        else
+                        {
+                             Board.Loss++;
+                             break;      
+                        }
+
+
                     }
-                            QuestionSection.Answer = "";
+                    if(Board.Loss==3)
+                    {
+                            Board.Total = 0;
+                    }
+                        
+
+
+
+                        QuestionSection.Answer = "";
                     },
                     arg => true
                     );
 
-                    }
-                    return checkAnswer;
+                }
+                return checkAnswer;
             }
         }
-
         private ICommand musicOnOff;
         public ICommand MusicOnOff
         {
@@ -110,11 +124,14 @@ namespace Familiada.ViewModel
 
             Music.PlayLooping();
             QuestionSection.GetRandomQuestion(questions);
+            Board.GetDisplayedAnswers(QuestionSection.Question);
             Board.GetRightAnswers(QuestionSection.Question);
+
         }
 
         public void GameLoop()
         {
+           
              
         }
 
