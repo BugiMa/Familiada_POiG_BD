@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace Familiada.View
 {
     /// <summary>
@@ -24,5 +25,7 @@ namespace Familiada.View
         {
             InitializeComponent();
         }
+
+        
     }
 }

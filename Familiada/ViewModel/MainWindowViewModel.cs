@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Timers;
 using System.Diagnostics;
 using System.Windows.Threading;
+using System.Windows.Data;
 
 namespace Familiada.ViewModel
 {
@@ -25,7 +26,6 @@ namespace Familiada.ViewModel
         public QuestionSectionViewModel QuestionSection { get; set; }
         public StrasburgerViewModel Strasburger { get; set; }
         private Question[] questions;
-        private bool newGame;
         private int round;
 
         public SoundPlayer Music { get; set; }
@@ -56,11 +56,12 @@ namespace Familiada.ViewModel
                     foreach (var rightAnswer in Board.RightAnswers)
                     {
                         i++;
-                        if (QuestionSection.Answer != "" && rightAnswer.Contains(QuestionSection.Answer))
+                        if (QuestionSection.Answer != "" && rightAnswer.Contains(QuestionSection.Answer) && !Board.DisplayedAnswers.Contains(QuestionSection.Answer))
                         {
                             Board.Total += Convert.ToInt32(Board.Points[i]);
                             Board.DisplayedAnswers[i] =(i+1)+". "+QuestionSection.Answer;
                                 Strasburger.CurrentGifPath = "/GameResources/STRASBURGER_WOW.gif";
+                                Strasburger.GetRandomJoke();
                             break;
                         }
                         else
@@ -72,11 +73,13 @@ namespace Familiada.ViewModel
                             {
                                 Board.Loss++;
                                 Strasburger.CurrentGifPath = "/GameResources/STRASBURGER_Boo.gif";
+                                Strasburger.GetRandomJoke();
                             }
                     }
                     if(Board.Loss==3)
                     {
-                            Board.Visible = "Hidden";
+                            //Board.Visible = "Hidden";
+                            NewQuestion();
                     }
 
 
@@ -117,10 +120,29 @@ namespace Familiada.ViewModel
             }
         }
 
+        private ICommand newRound;
+
+        public ICommand NewRound
+        {
+            get
+            {
+                if (newRound == null)
+                {
+                    newRound = new RelayCommand(
+                        arg =>
+                        {
+                            NewQuestion();
+                        },
+                        arg => Menu.Visible == "Hidden"
+                        );
+                }
+                return newRound;
+            }
+        }
+
         public MainWindowViewModel()
         {
             round = 0;
-            newGame = true;
             Music = new SoundPlayer(@"..\..\Familjadee.wav");
             MusicOn = true;
 
@@ -133,6 +155,7 @@ namespace Familiada.ViewModel
 
             Music.PlayLooping();
 
+           
             NewQuestion();
 
             //QuestionSection.RealTimer.Elapsed+=GameLoop;
@@ -149,11 +172,16 @@ namespace Familiada.ViewModel
                 round++;
         }
 
+        private void TimerSourceUpdated(object sender, DataTransferEventArgs e)
+        {
+
+        }
+
         /*public void GameLoop(object source, ElapsedEventArgs e)
         {
             if (Menu.Visible == "Hidden")
             {
-                if (newGame)
+                if (round==0)
                 {
                     newGame = false;
                     QuestionSection.Stopwatch.Start();
@@ -179,7 +207,7 @@ namespace Familiada.ViewModel
                 }
             }
         }*/
-        
+
 
 
 
