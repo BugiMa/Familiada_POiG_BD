@@ -11,6 +11,7 @@ using System.Windows.Forms;
 namespace Familiada.ViewModel
 {
     using Base;
+    using Familiada.View.UserControls;
     using Model;
     using Model.DAL;
     using System.Windows.Controls;
@@ -19,6 +20,7 @@ namespace Familiada.ViewModel
     {
         public MenuViewModel Menu { get; set; }
         public BoardViewModel Board { get; set; }
+        public GameOverViewModel GameOver { get; set; }
         public QuestionSectionViewModel QuestionSection { get; set; }
         public StrasburgerViewModel Strasburger { get; set; }
         private Question[] questions;
@@ -36,7 +38,6 @@ namespace Familiada.ViewModel
             }
         }
 
-
         private ICommand checkAnswer;
         public ICommand CheckAnswer
         {
@@ -48,7 +49,7 @@ namespace Familiada.ViewModel
                     arg =>
                     {
                     int i = -1;
-                        int notIt = 0;
+                    int notIt = 0;
                     foreach (var rightAnswer in Board.RightAnswers)
                     {
                         i++;
@@ -63,15 +64,13 @@ namespace Familiada.ViewModel
                                 notIt++;                                
                         }
 
-                            if (notIt == 6) Board.Loss++;
+                        if (notIt == 6) Board.Loss++;
                     }
                     if(Board.Loss==3)
                     {
-                            Board.Total = 0;
+
+                        GameOver = new GameOverViewModel();
                     }
-                        
-
-
 
                         QuestionSection.Answer = "";
                     },
@@ -114,7 +113,6 @@ namespace Familiada.ViewModel
         {
             Music = new SoundPlayer(@"..\..\Familjadee.wav");
             MusicOn = true;
-
             Menu = new MenuViewModel();
             Board = new BoardViewModel();
             Strasburger = new StrasburgerViewModel();
