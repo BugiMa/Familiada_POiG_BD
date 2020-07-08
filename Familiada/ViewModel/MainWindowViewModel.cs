@@ -48,7 +48,6 @@ namespace Familiada.ViewModel
                     arg =>
                     {
                     int i = -1;
-                    int j = -1;
                     foreach (var rightAnswer in Board.RightAnswers)
                     {
                         i++;
@@ -60,17 +59,27 @@ namespace Familiada.ViewModel
                         }
                         else
                         {
-
+                             Board.Loss++;
+                             break;      
                         }
+
+
                     }
+                    if(Board.Loss==3)
+                    {
+                            Board.Total = 0;
+                    }
+                        
+
+
 
                         QuestionSection.Answer = "";
                     },
                     arg => true
                     );
 
-                    }
-                    return checkAnswer;
+                }
+                return checkAnswer;
             }
         }
         private ICommand musicOnOff;

@@ -13,6 +13,7 @@ namespace Familiada.ViewModel
         private ObservableCollection<string> displayedAnswers;
         private List<string> points;
         private int total;
+        private int loss;
 
         public ObservableCollection<string> RightAnswers
         {
@@ -35,6 +36,12 @@ namespace Familiada.ViewModel
             get => total;
             set { total = value; OnPropertyChanged(); }
         }
+        public int Loss
+        {
+            get => loss;
+            set { loss = value; OnPropertyChanged(); }
+        }
+
 
         public void GetRightAnswers(Question currentQuestion)
         {
