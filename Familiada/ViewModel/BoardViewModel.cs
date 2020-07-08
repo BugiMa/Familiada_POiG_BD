@@ -3,13 +3,14 @@ using Familiada.Model;
 using System.Collections.Generic;
 using System;
 using System.Collections.ObjectModel;
+using Familiada.View;
 
 namespace Familiada.ViewModel
 {
     class BoardViewModel: ViewModelBase
     {
         private ObservableCollection<string> rightAnswers;
-        //private List<string> displayedAnswers;
+        private ObservableCollection<string> displayedAnswers;
         private List<string> points;
         private int total;
 
@@ -19,11 +20,11 @@ namespace Familiada.ViewModel
             set { rightAnswers = value; this.OnPropertyChanged(); }
         }
 
-       /* public List<string> DisplayedAnswers
+        public ObservableCollection<string> DisplayedAnswers
         {
             get => displayedAnswers;
             set { displayedAnswers = value; this.OnPropertyChanged(); }
-        }*/
+        }
         public List<string> Points
         {
             get => points;
@@ -46,9 +47,17 @@ namespace Familiada.ViewModel
                 Points.Add(point);
             }
         }
-        
+
+        public void GetDisplayedAnswers(Question currentQuestion)
+        {
+            for(int i=0; i<6;i++)
+            {
+                DisplayedAnswers.Add("----------------");
+            }
+        }
         public BoardViewModel()
         {
+            displayedAnswers = new ObservableCollection<string>();
             RightAnswers = new ObservableCollection<string>();
             Points = new List<string>();
         }
