@@ -17,6 +17,7 @@ namespace Familiada.ViewModel
     using Base;
     using Model;
     using Model.DAL;
+    using System.IO;
     using System.Windows.Controls;
 
     class MainWindowViewModel: ViewModelBase
@@ -29,6 +30,7 @@ namespace Familiada.ViewModel
         private Question[] questions;
         private int round;
         private string finalMessage;
+        private string pathToSave;
         public string FinalMessage
         {
             get => finalMessage;
@@ -95,6 +97,7 @@ namespace Familiada.ViewModel
                                 FinalMessage = "Gratulacje " + Menu.TeamName + "! Twoja drużyna uzyskała " + Board.Total + " punktów.";
                                 Board.Visible = "Hidden";
                                 QuestionSection.Stopwatch.Stop();
+                                SaveTotal();
                             }
                             else
                             {
@@ -213,6 +216,33 @@ namespace Familiada.ViewModel
 
         }
 
+
+        public void SaveTotal()
+        {
+
+            pathToSave = @"C:/Users/Prucfka/source/repos/Familiada_POiG_BD1/Familiada/GameResources/points.txt";
+            int counter = 1;
+            foreach (string line in File.ReadLines(pathToSave))
+            {
+                if (line != String.Empty) ++counter;
+            }
+            string dataToSave = string.Empty;
+            dataToSave += $"{counter}.{Menu.TeamName} {Board.Total} pkt";
+            if (File.Exists(pathToSave))
+            {
+                if (new FileInfo(pathToSave).Length == 0)
+                {
+                    File.WriteAllText(pathToSave, dataToSave);
+                    File.AppendAllText(pathToSave, "\n");
+                }
+                else
+                {
+                    File.AppendAllText(pathToSave, dataToSave);
+                    File.AppendAllText(pathToSave, "\n");
+                }
+
+            }
+        }
         /*public void GameLoop(object source, ElapsedEventArgs e)
         {
             if (Menu.Visible == "Hidden")

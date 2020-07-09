@@ -218,6 +218,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Familjadee.wav" />
+    <Resource Include="GameResources\points.txt" />
     <Resource Include="GameResources\StrasburgerBoo.txt" />
     <Resource Include="GameResources\StrasburgerYay.txt" />
     <Resource Include="GameResources\WindowBackground.png" />
