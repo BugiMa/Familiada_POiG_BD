@@ -219,8 +219,7 @@ namespace Familiada.ViewModel
 
         public void SaveTotal()
         {
-
-            pathToSave = @"C:/Users/Prucfka/source/repos/Familiada_POiG_BD1/Familiada/GameResources/points.txt";
+            pathToSave = @"..\..\GameResources\points.txt";
             int counter = 1;
             foreach (string line in File.ReadLines(pathToSave))
             {
