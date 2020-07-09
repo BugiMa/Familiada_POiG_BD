@@ -29,7 +29,7 @@
         <Image Source ="{StaticResource GameOverBoard}" Stretch="Fill" Grid.RowSpan="7" Grid.ColumnSpan="3"/>
         <TextBlock Text="{Binding FinalMessage}" Foreground="Yellow" FontSize="20" TextAlignment="Center" Padding="35" Grid.ColumnSpan="4" Margin="10,0,10,0" Grid.RowSpan="3" FontFamily="{StaticResource MesseDuesseldorf}"/>
         <Button Command="{Binding NewGame}" Content="Nowa Gra" Grid.Row="3" Grid.Column="1" FontSize="30" FontFamily="{StaticResource MesseDuesseldorf}" Background="{x:Null}" Foreground="Yellow" BorderThickness="0"/>
-        <Button Command="{Binding NewGame}" Content="Najlepsze wyniki" Grid.Row="4" FontSize="30"  FontFamily="{StaticResource MesseDuesseldorf}" Background="{x:Null}" Foreground="Yellow" BorderThickness="0" Grid.ColumnSpan="3" Margin="140,0"/>
-        <Button Command="{Binding NewGame}" Content="Instrukcja" Grid.Row="5" Grid.Column="1" FontSize="30" FontFamily="{StaticResource MesseDuesseldorf}" Background="{x:Null}" Foreground="Yellow" BorderThickness="0"/>
+        <Button Command="{Binding BestScores}" Content="Najlepsze wyniki" Grid.Row="4" FontSize="30"  FontFamily="{StaticResource MesseDuesseldorf}" Background="{x:Null}" Foreground="Yellow" BorderThickness="0" Grid.ColumnSpan="3" Margin="140,0"/>
+        <Button Command="{Binding Instruction}" Content="Instrukcja" Grid.Row="5" Grid.Column="1" FontSize="30" FontFamily="{StaticResource MesseDuesseldorf}" Background="{x:Null}" Foreground="Yellow" BorderThickness="0"/>
     </Grid>
 </UserControl>

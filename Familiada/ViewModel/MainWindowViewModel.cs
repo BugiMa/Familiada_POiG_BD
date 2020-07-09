@@ -246,39 +246,44 @@ namespace Familiada.ViewModel
 
             }
         }
-        /*public void GameLoop(object source, ElapsedEventArgs e)
+
+        private ICommand bestScores;
+        public ICommand BestScores
         {
-            if (Menu.Visible == "Hidden")
+            get
             {
-                if (round==0)
+                if (bestScores == null)
                 {
-                    newGame = false;
-                    QuestionSection.Stopwatch.Start();
-
-                    NewQuestion();
-
-                    
-                }
-                else
-                {
-                    while (QuestionSection.RealTimer.Enabled)
-                    {
-                        if (QuestionSection.Timer == "0" || Board.Loss == 3)
+                    bestScores = new RelayCommand(
+                        arg =>
                         {
-                            //QuestionSection.Stopwatch.Stop();
-                            Board.Loss = 0;
-
-                            NewQuestion();
-
-                            QuestionSection.Stopwatch.Restart();
-                        }
-                    }
+                            MessageBox.Show(File.ReadAllText(@"..\..\GameResources\points.txt"));
+                        },
+                        arg => true
+                        );
                 }
+                return bestScores;
             }
-        }*/
+        }
 
-
-
+        private ICommand instruction;
+        public ICommand Instruction
+        {
+            get
+            {
+                if (instruction == null)
+                {
+                    instruction = new RelayCommand(
+                        arg =>
+                        {
+                            MessageBox.Show("Gra rozpoczyna się od wpisania nazwy drużyny. W trakcie rozgrywki należy wpisywać najbardziej pasujące do pytania odpowiedzi w różowym polu na dole okna i zatwierdzać je fioletowym przyciskiem.");
+                        },
+                        arg => true
+                        );
+                }
+                return instruction;
+            }
+        }
 
     }
 }

@@ -45,8 +45,8 @@
             </MenuItem>
             <MenuItem Header="Opcje">
                 <MenuItem Header="Nowa gra"/>
-                <MenuItem Header="Najlepsze wyniki"/>
-                <MenuItem Header="Instrukcja"/>
+                <MenuItem Header="Najlepsze wyniki" Command="{Binding BestScores}"/>
+                <MenuItem Header="Instrukcja" Command="{Binding Instruction}"/>
             </MenuItem>
         </Menu>
 
