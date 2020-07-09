@@ -98,6 +98,7 @@ namespace Familiada.ViewModel
                                 Board.Visible = "Hidden";
                                 QuestionSection.Stopwatch.Stop();
                                 SaveTotal();
+                                round++;
                             }
                             else
                             {
@@ -117,7 +118,7 @@ namespace Familiada.ViewModel
 
                         QuestionSection.Answer = "";
                     },
-                    arg => true
+                    arg => round<=5 && Menu.Visible=="Hidden"
                     );
 
                 }
@@ -187,6 +188,7 @@ namespace Familiada.ViewModel
 
             Music.PlayLooping();
             Menu.MenuClosed += NewQuestion;
+            QuestionSection.TimeOver += NewQuestion;
            
             //NewQuestion();
 
