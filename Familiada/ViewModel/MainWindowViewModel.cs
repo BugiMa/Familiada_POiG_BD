@@ -95,7 +95,7 @@ namespace Familiada.ViewModel
                         {
                             if (round == 5)
                             {
-                                FinalMessage = Resources.Congrats + Menu.TeamName + Resources.ByeMessage + Board.Total + Resources.PointsSign;
+                                FinalMessage = Resources.Congrats + Menu.TeamName + Resources.YourTeamGained+" "+ Board.Total + Resources.PointsSign;
                                 Board.Visible = Resources.Hidden;
                                 QuestionSection.Stopwatch.Stop();
                                 Strasburger.Saying = Resources.ByeMessage;
