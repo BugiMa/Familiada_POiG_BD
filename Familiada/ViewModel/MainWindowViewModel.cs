@@ -69,7 +69,7 @@ namespace Familiada.ViewModel
                     foreach (var rightAnswer in Board.RightAnswers)
                     {
                         i++;
-                        if (QuestionSection.Answer != "" && rightAnswer.Contains(QuestionSection.Answer) && !Board.DisplayedAnswers.Contains(QuestionSection.Answer))
+                        if (QuestionSection.Answer != "" && rightAnswer.Contains(QuestionSection.Answer.ToLower()) && !Board.DisplayedAnswers.Contains(QuestionSection.Answer.ToUpper()))
                         {
                             Board.Total += Convert.ToInt32(Board.Points[i]);
                             Board.DisplayedAnswers[i] =(i+1)+". "+QuestionSection.Answer.ToUpper();
@@ -224,7 +224,12 @@ namespace Familiada.ViewModel
         public void SaveTotal()
         {
             pathToSave = @"..\..\GameResources\points.txt";
+            string dataToSave = File.ReadAllText(@"..\..\GameResources\points.txt");
+            dataToSave += $"{Menu.TeamName};{Board.Total}\n";
+            File.WriteAllText(pathToSave, dataToSave);
+            /*
             int counter = 1;
+            
             foreach (string line in File.ReadLines(pathToSave))
             {
                 if (line != String.Empty) ++counter;
@@ -245,6 +250,7 @@ namespace Familiada.ViewModel
                 }
 
             }
+            */
         }
 
         private ICommand bestScores;
@@ -257,7 +263,23 @@ namespace Familiada.ViewModel
                     bestScores = new RelayCommand(
                         arg =>
                         {
-                            MessageBox.Show(File.ReadAllText(@"..\..\GameResources\points.txt"));
+                            int i = 0;
+                            string points = "";
+                            List<string[]> scores = new List<string[]> ();
+                            foreach (string line in File.ReadLines(@"..\..\GameResources\points.txt"))
+                            { 
+                                if (line != "")
+                                {
+                                    scores.Add(line.Split(';'));
+                                }
+                            }
+                            scores = scores.OrderBy(arr => arr[1]).ToList();
+
+                            foreach (string[] player in scores)
+                            {
+                                points += $"{++i}. {player[0]}   {player[1]} pkt.\n";
+                            }
+                            MessageBox.Show(points);
                         },
                         arg => true
                         );
