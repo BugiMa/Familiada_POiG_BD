@@ -33,8 +33,8 @@ namespace Familiada.ViewModel
 
         public StrasburgerViewModel()
         {
-            Saying = "Witaj w Familiadzie! Wpisz nazwę swojej drużyny.";
-            CurrentGifPath = "/GameResources/STRASBURGER_Talking.gif";
+            Saying = Properties.Resources.WelcomeMessage;
+            CurrentGifPath = Properties.Resources.StrasburgerTalkingGif;
             hisJokes = DataAccess.GetAllJokes().ToArray();
             hisYesYes = DataAccess.GetYays();
             hisNoNo = DataAccess.GetBoos();

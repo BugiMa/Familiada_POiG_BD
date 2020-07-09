@@ -59,5 +59,149 @@ namespace Familiada.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Gratulacje .
+        /// </summary>
+        internal static string Congrats {
+            get {
+                return ResourceManager.GetString("Congrats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu /GameResources/Cross.gif.
+        /// </summary>
+        internal static string CrossGif {
+            get {
+                return ResourceManager.GetString("CrossGif", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Hidden.
+        /// </summary>
+        internal static string Hidden {
+            get {
+                return ResourceManager.GetString("Hidden", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu . ----------------.
+        /// </summary>
+        internal static string HiddenWord {
+            get {
+                return ResourceManager.GetString("HiddenWord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Gra rozpoczyna się od wpisania nazwy drużyny. W trakcie rozgrywki należy wpisywać najbardziej pasujące do pytania odpowiedzi w różowym polu na dole okna i zatwierdzać je fioletowym przyciskiem..
+        /// </summary>
+        internal static string Instruction {
+            get {
+                return ResourceManager.GetString("Instruction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu ..\..\Familjadee.wav.
+        /// </summary>
+        internal static string MusicFile {
+            get {
+                return ResourceManager.GetString("MusicFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu \n.
+        /// </summary>
+        internal static string NewLine {
+            get {
+                return ResourceManager.GetString("NewLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu /GameResources/NoCross.gif.
+        /// </summary>
+        internal static string NoCrossGif {
+            get {
+                return ResourceManager.GetString("NoCrossGif", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu ..\..\GameResources\points.txt.
+        /// </summary>
+        internal static string PointsFile {
+            get {
+                return ResourceManager.GetString("PointsFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu  pkt..
+        /// </summary>
+        internal static string PointsSign {
+            get {
+                return ResourceManager.GetString("PointsSign", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu /GameResources/STRASBURGER_Boo.gif.
+        /// </summary>
+        internal static string StrasburgerBooGif {
+            get {
+                return ResourceManager.GetString("StrasburgerBooGif", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu /GameResources/STRASBURGER_Talking.gif.
+        /// </summary>
+        internal static string StrasburgerTalkingGif {
+            get {
+                return ResourceManager.GetString("StrasburgerTalkingGif", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu /GameResources/STRASBURGER_WOW.gif.
+        /// </summary>
+        internal static string StrasburgerWowGif {
+            get {
+                return ResourceManager.GetString("StrasburgerWowGif", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Visible.
+        /// </summary>
+        internal static string Visible {
+            get {
+                return ResourceManager.GetString("Visible", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Witaj w Familiadzie! Wpisz nazwę swojej drużyny..
+        /// </summary>
+        internal static string WelcomeMessage {
+            get {
+                return ResourceManager.GetString("WelcomeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu ! Twoja drużyna uzyskała .
+        /// </summary>
+        internal static string YourTeamGained {
+            get {
+                return ResourceManager.GetString("YourTeamGained", resourceCulture);
+            }
+        }
     }
 }

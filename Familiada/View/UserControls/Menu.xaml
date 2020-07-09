@@ -20,7 +20,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Image Source ="{StaticResource MenuBoard}" Stretch="Fill" Grid.RowSpan="2"/>
-        <TextBox Margin="20,20,20,20" FontSize="32" Text="{Binding Menu.TeamName,Mode=TwoWay}" TextAlignment="Center" Padding="35" FontFamily="{StaticResource MesseDuesseldorf}" Background="{x:Null}" Foreground="Yellow"/>
+        <TextBox Margin="20,20,20,20" FontSize="32" MaxLength="20" Text="{Binding Menu.TeamName,Mode=TwoWay}" TextAlignment="Center" Padding="35" FontFamily="{StaticResource MesseDuesseldorf}" Background="{x:Null}" Foreground="Yellow"/>
         <Button Command="{Binding Menu.NewGame}" Content="Graj!" Grid.Row="1" Margin="185,50" FontSize="64" FontFamily="{StaticResource MesseDuesseldorf}" Background="{x:Null}" Foreground="Yellow" BorderThickness="0"/>
     </Grid>
 </UserControl>

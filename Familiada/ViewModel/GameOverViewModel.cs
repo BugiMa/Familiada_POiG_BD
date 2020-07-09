@@ -32,7 +32,7 @@ namespace Familiada.ViewModel
                     gameOver = new RelayCommand(
                         arg =>
                         {
-                            Visible = "Hidden";
+                            Visible = Properties.Resources.Hidden;
                             this.OnPropertyChanged();
                         },
                         arg => true

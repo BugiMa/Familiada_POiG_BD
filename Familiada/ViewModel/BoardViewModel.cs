@@ -81,7 +81,7 @@ namespace Familiada.ViewModel
             DisplayedAnswers.Clear();
             for(int i=0; i<6;i++)
             {
-                DisplayedAnswers.Add((i+1)+". ----------------");
+                DisplayedAnswers.Add((i+1)+Properties.Resources.HiddenWord);
             }
         }
         public BoardViewModel()
@@ -89,11 +89,11 @@ namespace Familiada.ViewModel
             displayedAnswers = new ObservableCollection<string>();
             RightAnswers = new ObservableCollection<string>();
             Points = new ObservableCollection<string>();
-            Visible = "Visible";
+            Visible = Properties.Resources.Visible;
             CrossPaths = new ObservableCollection<string>();
             for (int i = 0; i < 3; i++)
             {
-                CrossPaths.Add("/GameResources/NoCross.gif");
+                CrossPaths.Add(Properties.Resources.NoCrossGif);
             }
         }
 

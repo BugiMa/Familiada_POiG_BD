@@ -19,6 +19,7 @@ namespace Familiada.ViewModel
     using Model.DAL;
     using System.IO;
     using System.Windows.Controls;
+    using Properties;
 
     class MainWindowViewModel: ViewModelBase
     {
@@ -64,61 +65,52 @@ namespace Familiada.ViewModel
                     checkAnswer = new RelayCommand(
                     arg =>
                     {
-                    int i = -1;
-                    int notIt = 0;
-                    foreach (var rightAnswer in Board.RightAnswers)
-                    {
-                        i++;
-                        if (QuestionSection.Answer != "" && rightAnswer.Contains(QuestionSection.Answer.ToLower()) && !Board.DisplayedAnswers.Contains(QuestionSection.Answer.ToUpper()))
+                        int i = -1;
+                        int notIt = 0;
+                        foreach (var rightAnswer in Board.RightAnswers)
                         {
-                            Board.Total += Convert.ToInt32(Board.Points[i]);
-                            Board.DisplayedAnswers[i] =(i+1)+". "+QuestionSection.Answer.ToUpper();
-                            Strasburger.CurrentGifPath = "/GameResources/STRASBURGER_WOW.gif";
+                            i++;
+                            if (QuestionSection.Answer != "" && rightAnswer.Contains(QuestionSection.Answer.ToLower()) && !Board.DisplayedAnswers.Contains(QuestionSection.Answer.ToUpper()))
+                            {
+                                Board.Total += Convert.ToInt32(Board.Points[i]);
+                                Board.DisplayedAnswers[i] = (i + 1) + ". " + QuestionSection.Answer.ToUpper();
+                                Strasburger.CurrentGifPath = Resources.StrasburgerWowGif;
                                 Strasburger.GetRandomYay();
-                            break;
-                        }
-                        else
-                        {
-                                notIt++;                                
-                        }
+                                break;
+                            }
+                            else
+                            {
+                                notIt++;
+                            }
 
                             if (notIt == 6)
                             {
                                 Board.Loss++;
-                                Board.CrossPaths[Board.Loss-1] = "/GameResources/Cross.gif";
-                                Strasburger.CurrentGifPath = "/GameResources/STRASBURGER_Boo.gif";
+                                Board.CrossPaths[Board.Loss - 1] = Resources.CrossGif;
+                                Strasburger.CurrentGifPath = Resources.StrasburgerBooGif;
                                 Strasburger.GetRandomBoo();
                             }
-                    }
-                    if(Board.Loss==3)
-                    {
+                        }
+                        if (Board.Loss == 3)
+                        {
                             if (round == 5)
                             {
-                                FinalMessage = "Gratulacje " + Menu.TeamName + "! Twoja drużyna uzyskała " + Board.Total + " punktów.";
-                                Board.Visible = "Hidden";
+                                FinalMessage = Resources.Congrats + Menu.TeamName + Resources.YourTeamGained + Board.Total + Resources.PointsSign;
+                                Board.Visible = Resources.Hidden;
                                 QuestionSection.Stopwatch.Stop();
                                 SaveTotal();
                                 round++;
                             }
                             else
                             {
-                                /*Stopwatch time = new Stopwatch();
-                                time.Restart();
-                                while (2-time.Elapsed.Seconds>0)
-                                {
-                                    Console.WriteLine("dziala");
-                                }
-                                time.Stop();*/
-
-                                
                                 NewQuestion();
                             }
-                    }
+                        }
 
 
                         QuestionSection.Answer = "";
                     },
-                    arg => round<=5 && Menu.Visible=="Hidden"
+                    arg => round <= 5 && Menu.Visible == Resources.Hidden
                     );
 
                 }
@@ -166,7 +158,7 @@ namespace Familiada.ViewModel
                         {
                             NewQuestion();
                         },
-                        arg => Menu.Visible == "Hidden"
+                        arg => Menu.Visible == Resources.Hidden
                         );
                 }
                 return newRound;
@@ -176,7 +168,7 @@ namespace Familiada.ViewModel
         public MainWindowViewModel()
         {
             round = 0;
-            Music = new SoundPlayer(@"..\..\Familjadee.wav");
+            Music = new SoundPlayer(Resources.MusicFile);
             MusicOn = true;
 
             Menu = new MenuViewModel();
@@ -206,12 +198,12 @@ namespace Familiada.ViewModel
                 Board.Loss = 0;
                 QuestionSection.Stopwatch.Restart();
                 round++;
-                Strasburger.CurrentGifPath = "/GameResources/STRASBURGER_Talking.gif";
+            Strasburger.CurrentGifPath = Resources.StrasburgerTalkingGif;
 
 
             for (int i = 0; i < 3; i++)
             {
-                Board.CrossPaths[i] = "/GameResources/NoCross.gif";
+                Board.CrossPaths[i] = Resources.NoCrossGif;
             }
         }
 
@@ -223,9 +215,9 @@ namespace Familiada.ViewModel
 
         public void SaveTotal()
         {
-            pathToSave = @"..\..\GameResources\points.txt";
-            string dataToSave = File.ReadAllText(@"..\..\GameResources\points.txt");
-            dataToSave += $"{Menu.TeamName};{Board.Total}\n";
+            pathToSave = Resources.PointsFile;
+            string dataToSave = File.ReadAllText(Resources.PointsFile);
+            dataToSave += $"{Menu.TeamName};{Board.Total}{Resources.NewLine}";
             File.WriteAllText(pathToSave, dataToSave);
             /*
             int counter = 1;
@@ -266,18 +258,18 @@ namespace Familiada.ViewModel
                             int i = 0;
                             string points = "";
                             List<string[]> scores = new List<string[]> ();
-                            foreach (string line in File.ReadLines(@"..\..\GameResources\points.txt"))
+                            foreach (string line in File.ReadLines(Resources.PointsFile))
                             { 
                                 if (line != "")
                                 {
                                     scores.Add(line.Split(';'));
                                 }
                             }
-                            scores = scores.OrderBy(arr => arr[1]).ToList();
+                            scores = scores.OrderByDescending(arr => Int32.Parse(arr[1])).ToList();
 
                             foreach (string[] player in scores)
                             {
-                                points += $"{++i}. {player[0]}   {player[1]} pkt.\n";
+                                points += $"{++i}. {player[0]}   {player[1]} {Resources.PointsFile}{Resources.NewLine}";
                             }
                             MessageBox.Show(points);
                         },
@@ -298,7 +290,7 @@ namespace Familiada.ViewModel
                     instruction = new RelayCommand(
                         arg =>
                         {
-                            MessageBox.Show("Gra rozpoczyna się od wpisania nazwy drużyny. W trakcie rozgrywki należy wpisywać najbardziej pasujące do pytania odpowiedzi w różowym polu na dole okna i zatwierdzać je fioletowym przyciskiem.");
+                            MessageBox.Show(Resources.Instruction);
                         },
                         arg => true
                         );
