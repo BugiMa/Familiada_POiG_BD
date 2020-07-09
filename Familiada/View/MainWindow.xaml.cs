@@ -22,9 +22,18 @@ namespace Familiada
     /// </summary>
     public partial class MainWindow : Window
     {
+        //MainWindowViewModel observer = new MainWindowViewModel();
+        //MenuViewModel observed = new MenuViewModel();
         public MainWindow()
         {
             InitializeComponent();
+
+            //observed.MenuClosed += observer.NewQuestion;
         }
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    observed.Visible = "Hidden";
+            //zmieniając własność obiekt emituje MojeZdarzenie
+        //}
     }
 }

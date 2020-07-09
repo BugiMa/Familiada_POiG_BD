@@ -98,7 +98,14 @@ namespace Familiada.ViewModel
                             }
                             else
                             {
-                                Strasburger.GetRandomJoke();
+                                /*Stopwatch time = new Stopwatch();
+                                time.Restart();
+                                while (2-time.Elapsed.Seconds>0)
+                                {
+                                    Console.WriteLine("dziala");
+                                }
+                                time.Stop();*/
+                                
                                 NewQuestion();
                             }
                     }
@@ -175,9 +182,9 @@ namespace Familiada.ViewModel
             questions = DataAccess.GetAllQuestions().ToArray();
 
             Music.PlayLooping();
-
+            Menu.MenuClosed += NewQuestion;
            
-            NewQuestion();
+            //NewQuestion();
 
             //QuestionSection.RealTimer.Elapsed+=GameLoop;
         }
@@ -187,13 +194,15 @@ namespace Familiada.ViewModel
                 QuestionSection.GetRandomQuestion(questions);
                 Board.GetRightAnswers(QuestionSection.Question);
                 Board.GetDisplayedAnswers(QuestionSection.Question);
-
+                Strasburger.GetRandomJoke();
 
                 Board.Loss = 0;
                 QuestionSection.Stopwatch.Restart();
                 round++;
+                Strasburger.CurrentGifPath = "/GameResources/STRASBURGER_Talking.gif";
 
-            for (int i = 0; i <3; i++)
+
+            for (int i = 0; i < 3; i++)
             {
                 Board.CrossPaths[i] = "/GameResources/NoCross.gif";
             }

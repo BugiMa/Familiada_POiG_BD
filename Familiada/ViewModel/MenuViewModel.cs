@@ -11,6 +11,7 @@ namespace Familiada.ViewModel
     class MenuViewModel: ViewModelBase
     {
         private string teamName;
+        public event Action MenuClosed;
 
         public string TeamName
         {
@@ -30,6 +31,8 @@ namespace Familiada.ViewModel
             {
                 visible = value;
                 this.OnPropertyChanged();
+
+                if (MenuClosed != null) MenuClosed();
             }
         }
         private ICommand newGame;
