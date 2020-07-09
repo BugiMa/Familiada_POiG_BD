@@ -44,7 +44,7 @@
                 <MenuItem Header="Włączona" IsChecked="{Binding MusicOn}" Command="{Binding MusicOnOff}"/>
             </MenuItem>
             <MenuItem Header="Opcje">
-                <MenuItem Header="Nowa gra"/>
+                <MenuItem Header="Nowa gra" Command="{Binding NewGame}"/>
                 <MenuItem Header="Najlepsze wyniki" Command="{Binding BestScores}"/>
                 <MenuItem Header="Instrukcja" Command="{Binding Instruction}"/>
             </MenuItem>

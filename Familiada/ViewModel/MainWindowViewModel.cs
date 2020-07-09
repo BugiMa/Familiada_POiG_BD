@@ -285,5 +285,25 @@ namespace Familiada.ViewModel
             }
         }
 
+        private ICommand newGame;
+        public ICommand NewGame
+        {
+            get
+            {
+                if (newGame == null)
+                {
+                    newGame = new RelayCommand(
+                        arg =>
+                        {
+                            Application.Restart();
+                            System.Windows.Application.Current.Shutdown();
+                        },
+                        arg => true
+                        );
+                }
+                return newGame;
+            }
+        }
+
     }
 }
