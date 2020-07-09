@@ -95,9 +95,10 @@ namespace Familiada.ViewModel
                         {
                             if (round == 5)
                             {
-                                FinalMessage = Resources.Congrats + Menu.TeamName + Resources.YourTeamGained + Board.Total + Resources.PointsSign;
+                                FinalMessage = Resources.Congrats + Menu.TeamName + Resources.ByeMessage + Board.Total + Resources.PointsSign;
                                 Board.Visible = Resources.Hidden;
                                 QuestionSection.Stopwatch.Stop();
+                                Strasburger.Saying = Resources.ByeMessage;
                                 SaveTotal();
                                 round++;
                             }
@@ -217,32 +218,9 @@ namespace Familiada.ViewModel
         {
             pathToSave = Resources.PointsFile;
             string dataToSave = File.ReadAllText(Resources.PointsFile);
-            dataToSave += $"{Menu.TeamName};{Board.Total}{Resources.NewLine}";
+            dataToSave += $"{Menu.TeamName};{Board.Total}\n";
             File.WriteAllText(pathToSave, dataToSave);
-            /*
-            int counter = 1;
-            
-            foreach (string line in File.ReadLines(pathToSave))
-            {
-                if (line != String.Empty) ++counter;
-            }
-            string dataToSave = string.Empty;
-            dataToSave += $"{counter}.{Menu.TeamName} {Board.Total} pkt";
-            if (File.Exists(pathToSave))
-            {
-                if (new FileInfo(pathToSave).Length == 0)
-                {
-                    File.WriteAllText(pathToSave, dataToSave);
-                    File.AppendAllText(pathToSave, "\n");
-                }
-                else
-                {
-                    File.AppendAllText(pathToSave, dataToSave);
-                    File.AppendAllText(pathToSave, "\n");
-                }
-
-            }
-            */
+          
         }
 
         private ICommand bestScores;
@@ -269,7 +247,7 @@ namespace Familiada.ViewModel
 
                             foreach (string[] player in scores)
                             {
-                                points += $"{++i}. {player[0]}   {player[1]} {Resources.PointsFile}{Resources.NewLine}";
+                                points += $"{++i}. {player[0]}   {player[1]} {Resources.PointsSign}\n";
                             }
                             MessageBox.Show(points);
                         },

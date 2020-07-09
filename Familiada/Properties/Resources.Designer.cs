@@ -61,6 +61,15 @@ namespace Familiada.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Dziękuję za grę!.
+        /// </summary>
+        internal static string ByeMessage {
+            get {
+                return ResourceManager.GetString("ByeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Gratulacje .
         /// </summary>
         internal static string Congrats {
@@ -111,15 +120,6 @@ namespace Familiada.Properties {
         internal static string MusicFile {
             get {
                 return ResourceManager.GetString("MusicFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        /// Wyszukuje zlokalizowany ciąg podobny do ciągu \n.
-        /// </summary>
-        internal static string NewLine {
-            get {
-                return ResourceManager.GetString("NewLine", resourceCulture);
             }
         }
         
@@ -196,7 +196,7 @@ namespace Familiada.Properties {
         }
         
         /// <summary>
-        /// Wyszukuje zlokalizowany ciąg podobny do ciągu ! Twoja drużyna uzyskała .
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu ! Twoja drużyna uzyskała.
         /// </summary>
         internal static string YourTeamGained {
             get {
