@@ -111,7 +111,7 @@ namespace Familiada.ViewModel
 
                         QuestionSection.Answer = "";
                     },
-                    arg => round <= 5 && Menu.Visible == Resources.Hidden
+                    arg => round <= 5 && Menu.Visible == Resources.Hidden && Board.Loss < 3
                     );
 
                 }
