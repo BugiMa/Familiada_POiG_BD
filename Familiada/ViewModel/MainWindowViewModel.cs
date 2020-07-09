@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Media;
 using Microsoft.VisualBasic;
@@ -108,6 +108,7 @@ namespace Familiada.ViewModel
                                     Console.WriteLine("dziala");
                                 }
                                 time.Stop();*/
+
                                 
                                 NewQuestion();
                             }
@@ -192,8 +193,9 @@ namespace Familiada.ViewModel
             //QuestionSection.RealTimer.Elapsed+=GameLoop;
         }
 
-        public void NewQuestion()
+        public async void NewQuestion()
         {
+            if(round!=0) await Task.Delay(2000);
                 QuestionSection.GetRandomQuestion(questions);
                 Board.GetRightAnswers(QuestionSection.Question);
                 Board.GetDisplayedAnswers(QuestionSection.Question);
